@@ -16,6 +16,8 @@
         width: 50%;
         margin: 0 auto;
         box-sizing: border-box;
+        overflow: hidden;
+        padding: 20px 20px;
     }
 
     label {
@@ -28,6 +30,7 @@
         padding: 5px 10px;
         width: 100%;
         font-size: 20px;
+        box-sizing: border-box;
     }
 
     input[type="submit"] {
@@ -42,13 +45,29 @@
         font-size: 30px;
     }
 
+    #your-answer-p {
+        font-size: 30px;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: skyblue;
+    }
+
     #answer-p {
         font-size: 30px;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
 
     #message-p {
         font-size: 30px;
     }
+
+    @media only screen and (max-width: 600px) {
+
+        form {
+            width: 100%;
+        }
+
+    }
+
 
 </style>
 
@@ -62,13 +81,14 @@
         <form action="{{ url_for('index') }}" method="POST">
 
             <p id="question-p">{{ question }}</p>
-            <p id="answer-p">{{ answer }}</p>
-            <p id="message-p">{{ message }}</p>
 
             <label for="answer">Answer:</label>
-            <input type="text" name="answer" id="answer">
+            <input type="text" name="answer" id="answer" required>
 
             <input type="submit" value="submit">
+
+            <p id="your-answer-p">{{ given_answer }}</p>
+            <p id="answer-p" style="color: {{ message_color }};">{{ answer }}</p>
 
         </form>
 
@@ -77,13 +97,6 @@
 <script>
 
     document.getElementById('answer').focus();
-
-    if(document.getElementById('answer-p').innerHTML == 'correct answer') {
-        document.getElementById('answer-p').style.color = 'green';
-    }
-    else {
-        document.getElementById('answer-p').style.color = 'red';
-    }
 
 </script>
 

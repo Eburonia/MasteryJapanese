@@ -19,7 +19,8 @@ def index():
 
     question = ''
     answer = ''
-    message = ''
+    message_color = ''
+    given_answer = ''
 
     if request.method == 'POST':
 
@@ -31,17 +32,17 @@ def index():
 
         # Compare answer with given answer
         if answer == given_answer:
-            message = 'correct answer'
-        
+            message_color = 'green'
+
         else:
-            message = 'incorrect answer'
+            message_color = 'red'
 
         question = generate_question()
 
     else:
         question = generate_question()
 
-    return render_template("index.html", question=question, answer=answer, message=message)
+    return render_template("index.html", question=question, answer=answer, message_color=message_color, given_answer=given_answer)
 
 
 if __name__ == "__main__":
