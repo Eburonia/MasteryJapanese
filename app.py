@@ -12,6 +12,7 @@ if os.path.exists("env.py"):
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
 
+
 @app.route("/", methods=["GET", "POST"])
 def index():
 
