@@ -1,9 +1,9 @@
 import os
 from question_generator import generate_question
-from question_generator import check_question
+from question_generator import reset_verbs
 from question_generator import show_answer
 
-from flask import (Flask, render_template, request, url_for)
+from flask import (Flask, render_template, request, url_for, redirect)
 
 
 if os.path.exists("env.py"):
@@ -17,6 +17,7 @@ def index():
 
     ''' This is the index page '''
 
+    # Set variables
     question = ''
     answer = ''
     message_color = ''
@@ -24,25 +25,49 @@ def index():
 
     if request.method == 'POST':
 
-        # Get the answer
-        answer = show_answer()
-
         # Get the input answer from the end-user
         given_answer = request.form.get('answer')
 
+        # Get the answer
+        answer = show_answer()
+
         # Compare answer with given answer
         if answer == given_answer:
-            message_color = 'green'
+
+            # Don't show given answer
+            given_answer = ''
+
+            # Set correct color (green)
+            message_color = 'limegreen'
 
         else:
+
+            # Get the input answer from the end-user
+            given_answer = request.form.get('answer')
+
+            # Set wrong color (red)
             message_color = 'red'
 
+        # Generate question
         question = generate_question()
 
     else:
+
+        # Generate question
         question = generate_question()
 
-    return render_template("index.html", question=question, answer=answer, message_color=message_color, given_answer=given_answer)
+    return render_template("index.html", question=question, answer=answer,
+                            message_color=message_color, given_answer=given_answer)
+
+
+@app.route("/reset_practice")
+def reset_practice():
+
+    ''' Reset the Verb set '''
+
+    reset_verbs()
+
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":

@@ -24,6 +24,14 @@ current_question = ''
 current_answer = ''
 
 
+def reset_verbs():
+
+    ''' Reset the verbs '''
+
+    global Verbs
+    Verbs = list(verbs)
+
+
 def generate_question():
 
     ''' Generate Question '''
@@ -74,7 +82,7 @@ def generate_question():
             return f'not {verbs[random_verb]["past_en"]} (plain)'
 
     else:
-        print('end')
+        return 'end'
 
 
 def check_question():
