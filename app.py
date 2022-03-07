@@ -1,10 +1,11 @@
+''' App.py '''
+
 import os
+from flask import (Flask, render_template, request, url_for, redirect)
+
 from question_generator import generate_question
 from question_generator import reset_verbs
 from question_generator import show_answer
-
-from flask import (Flask, render_template, request, url_for, redirect)
-
 
 if os.path.exists("env.py"):
     import env
@@ -33,13 +34,15 @@ def index():
         answer = show_answer()
 
         # Compare answer with given answer
-        if answer == given_answer:
+        if answer[0] == given_answer or answer[1] == given_answer:
 
             # Don't show given answer
             given_answer = ''
 
             # Set correct color (green)
             message_color = 'limegreen'
+
+            answer = f'{answer[1]}【{answer[0]}】'
 
         else:
 
@@ -57,8 +60,9 @@ def index():
         # Generate question
         question = generate_question()
 
-    return render_template("index.html", question=question, answer=answer,
-                            message_color=message_color, given_answer=given_answer)
+    return render_template(
+        "index.html", question=question, answer=answer,
+        message_color=message_color, given_answer=given_answer)
 
 
 @app.route("/reset_practice")
