@@ -15,98 +15,62 @@
 
 <style>
 
-    body {
-        background-color: rgb(30, 30, 30);
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 1px;
     }
 
-    form {
-        width: 50%;
-        margin: 0 auto;
-        box-sizing: border-box;
-        overflow: hidden;
-        padding: 20px 20px;
-        text-align: center;
-        color: whitesmoke;
+    #question-div {
+      font-size: 40px;
+      text-align: center;
+      background-color: salmon;
+      padding: 20px;
     }
 
-    label {
-        display: block;
-        margin-bottom: 5px;
-        font-size: 24px;
-    }
-
-    input[type="text"] {
-        padding: 5px 10px;
-        width: 100%;
-        font-size: 20px;
-        box-sizing: border-box;
-    }
-
-    input[type="submit"] {
-        display: block;
-        box-sizing: border-box;
-        padding: 5px 10px;
-        font-size: 20px;
-        margin: 25px auto;
-        cursor: pointer;
-    }
-
-    #question-p {
-        font-size: 36px;
-        color: rgb(251, 213, 168);
-    }
-
-    #your-answer-p {
-        text-align: center;
-        font-size: 30px;
-        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        color: skyblue;
+    #answer-input-div {
+      padding: 20px;
     }
 
     #answer-p {
         font-size: 30px;
         text-align: center;
-        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
 
-    #message-p {
-        font-size: 30px;
+    form {
+      width: 40%;
+      margin: 0 auto;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type=text] {
+      width: 100%;
+      padding: 5px 10px;
+      font-size: 20px;
+    }
+
+    input[type=submit] {
+      display: block;
+      margin: 10px 0;
+      padding: 3px 5px;
+      font-size: 14px;
     }
 
     #reset-practice {
-        font-size: 25px;
         text-decoration: none;
-        color: rgb(255, 113, 151);
+        color: blue;
+        margin-top: 20px;
     }
 
-    #hiragana-keyboard {
-        color: whitesmoke;
-        font-size: 40px;
-        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        background-color: black;
-        width: 25%;
-        margin: 0 auto;
-        box-sizing: border-box;
-    }
-
-    .row {
-        display: block;
-        box-sizing: border-box;
-        width: 100%;
-    }
-
-    .col {
-        float: left;
-        margin: 1px;
-        width: calc(20% - 2px);
-        text-align: center;
-        cursor: pointer;
-        background-color: lightgray;
-        box-sizing: border-box;
-        color: black;
-        height: 60px;
-    }
-
+    /* responsive design */
     @media only screen and (max-width: 600px) {
 
         form {
@@ -114,7 +78,6 @@
         }
 
     }
-
 
 </style>
 
@@ -125,135 +88,24 @@
     
     <main>
 
-        <form action="{{ url_for('index') }}" method="POST">
+        <div id="question-div">{{ question }}</div>
 
-            <p id="question-p">{{ question }}</p>
+        <div id="answer-input-div">
 
-            <label for="answer">Answer:</label>
-            <input type="text" name="answer" id="answer" required>
+            <form action="{{ url_for('index') }}" method="POST">
 
-            <input type="submit" value="submit">
-            
-            <a href="{{ url_for('reset_practice') }}" id="reset-practice">Reset Practice</a>
+                <p id="answer-p" style="color: {{ message_color }};">{{ answer }}</p>
 
-            <p id="your-answer-p">{{ given_answer }}</p>
-            <p id="answer-p" style="color: {{ message_color }};">{{ answer }}</p>
+                <label for="answer">Answer:</label>
+                <input type="text" name="answer" id="answer" required>
 
-            <p style="color: white;">{{ verbs_length }}</p>
+                <input type="submit" value="submit">
+                
+                <a href="{{ url_for('reset_practice') }}" id="reset-practice">Reset Practice</a>
 
-        </form>
+                <p id="your-answer-p">{{ given_answer }}</p>
 
-        <div id="hiragana-keyboard">
-
-            <div class="row">
-
-                <div class="col col-a">あ</div>
-                <div class="col">い</div>
-                <div class="col">う</div>
-                <div class="col">え</div>
-                <div class="col">お</div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col">か</div>
-                <div class="col">き</div>
-                <div class="col">く</div>
-                <div class="col">け</div>
-                <div class="col">こ</div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col">さ</div>
-                <div class="col">し</div>
-                <div class="col">す</div>
-                <div class="col">せ</div>
-                <div class="col">そ</div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col">た</div>
-                <div class="col">ち</div>
-                <div class="col">つ</div>
-                <div class="col">て</div>
-                <div class="col">と</div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col">な</div>
-                <div class="col">に</div>
-                <div class="col">ぬ</div>
-                <div class="col">ね</div>
-                <div class="col">の</div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col">は</div>
-                <div class="col">ひ</div>
-                <div class="col">ふ</div>
-                <div class="col">へ</div>
-                <div class="col">ほ</div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col">ま</div>
-                <div class="col">み</div>
-                <div class="col">む</div>
-                <div class="col">め</div>
-                <div class="col">も</div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col">や</div>
-                <div class="col">-</div>
-                <div class="col">ゆ</div>
-                <div class="col">-</div>
-                <div class="col">よ</div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col">ら</div>
-                <div class="col">り</div>
-                <div class="col">る</div>
-                <div class="col">れ</div>
-                <div class="col">ろ</div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col">わ</div>
-                <div class="col">-</div>
-                <div class="col">-</div>
-                <div class="col">-</div>
-                <div class="col">を</div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col">ん</div>
-                <div class="col">-</div>
-                <div class="col">-</div>
-                <div class="col">-</div>
-                <div class="col">-</div>
-
-            </div>
+            </form>
 
         </div>
 
@@ -270,7 +122,6 @@
         $('input[type="text"]').val(a) ;
 
     });
-
 
 </script>
 

@@ -42,6 +42,7 @@ def index():
             # Set correct color (green)
             message_color = 'limegreen'
 
+            # Show Hiragana and Mazegaki answer
             answer = f'{answer[1]}【{answer[0]}】'
 
         else:
@@ -51,6 +52,9 @@ def index():
 
             # Set wrong color (red)
             message_color = 'red'
+
+            # Show Hiragana and Mazegaki answer
+            answer = f'{answer[1]}【{answer[0]}】'
 
         # Generate question
         question = generate_question()
