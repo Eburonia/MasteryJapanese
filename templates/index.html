@@ -70,11 +70,37 @@
         margin-top: 20px;
     }
 
+    /* Hiragana Keyboard */
+    #hiragana-keyboard {
+        box-sizing: border-box;
+        width: 40%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .keyboard-button {
+        background-color: rgb(20, 20, 20);
+        color: whitesmoke;
+        float: left;
+        width: calc(20% - 4px);
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 40px;
+        margin: 2px;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
     /* responsive design */
     @media only screen and (max-width: 600px) {
 
         form {
             width: 100%;
+        }
+
+        #hiragana-keyboard {
+            width: 100%;
+            padding: 5px;
         }
 
     }
@@ -109,19 +135,116 @@
 
         </div>
 
+        <div id="hiragana-keyboard">
+
+            <div id="col-a" class="keyboard-button">あ</div>
+            <div id="col-i" class="keyboard-button">い</div>
+            <div id="col-u" class="keyboard-button">う</div>
+            <div id="col-e" class="keyboard-button">え</div>
+            <div id="col-o" class="keyboard-button">お</div>
+
+            <div id="col-ka" class="keyboard-button">か</div>
+            <div id="col-ki" class="keyboard-button">き</div>
+            <div id="col-ku" class="keyboard-button">く</div>
+            <div id="col-ke" class="keyboard-button">け</div>
+            <div id="col-ko" class="keyboard-button">こ</div>
+
+            <div id="col-sa" class="keyboard-button">さ</div>
+            <div id="col-su" class="keyboard-button">す</div>
+            <div id="col-shi" class="keyboard-button">し</div>
+            <div id="col-se" class="keyboard-button">せ</div>
+            <div id="col-so" class="keyboard-button">そ</div>
+
+            <div id="col-ta" class="keyboard-button">た</div>
+            <div id="col-chi" class="keyboard-button">ち</div>
+            <div id="col-tsu" class="keyboard-button">つ</div>
+            <div id="col-te" class="keyboard-button">て</div>
+            <div id="col-to" class="keyboard-button">と</div>
+
+            <div id="col-ha" class="keyboard-button">は</div>
+            <div id="col-hi" class="keyboard-button">ひ</div>
+            <div id="col-fu" class="keyboard-button">ふ</div>
+            <div id="col-he" class="keyboard-button">へ</div>
+            <div id="col-ho" class="keyboard-button">ほ</div>
+
+            <div id="col-ma" class="keyboard-button">ま</div>
+            <div id="col-mi" class="keyboard-button">み</div>
+            <div id="col-mu" class="keyboard-button">む</div>
+            <div id="col-me" class="keyboard-button">め</div>
+            <div id="col-mo" class="keyboard-button">も</div>
+
+            <div id="col-na" class="keyboard-button">な</div>
+            <div id="col-ni" class="keyboard-button">に</div>
+            <div id="col-nu" class="keyboard-button">ぬ</div>
+            <div id="col-ne" class="keyboard-button">ね</div>
+            <div id="col-no" class="keyboard-button">の</div>
+
+            <div id="col-ra" class="keyboard-button">ら</div>
+            <div id="col-ri" class="keyboard-button">り</div>
+            <div id="col-ru" class="keyboard-button">る</div>
+            <div id="col-re" class="keyboard-button">れ</div>
+            <div id="col-ro" class="keyboard-button">ろ</div>
+
+            <div id="col-wa" class="keyboard-button">わ</div>
+            <div id="" class="keyboard-button"></div>
+            <div id="" class="keyboard-button"></div>
+            <div id="" class="keyboard-button"></div>
+            <div id="col-wo" class="keyboard-button">を</div>
+
+            <div id="col-ya" class="keyboard-button">や</div>
+            <div id="" class="keyboard-button"></div>
+            <div id="col-yu" class="keyboard-button">ゆ</div>
+            <div id="" class="keyboard-button"></div>
+            <div id="col-yo" class="keyboard-button">よ</div>
+
+            <div id="col-n" class="keyboard-button">ん</div>
+            <div id="" class="keyboard-button"></div>
+            <div id="" class="keyboard-button"></div>
+            <div id="" class="keyboard-button"></div>
+            <div id="" class="keyboard-button"></div>
+
+        </div>
+
     </main>
 
 <script>
 
-    document.getElementById('answer').focus();
+    $(document).on("click", ".keyboard-button", function () {
 
-    $(document).on('click', '.col-a', function(){
+        let pushed = $(this).attr('id');
+        let x = '';
+
+        switch(pushed) {
+
+            case 'col-a':
+
+                x = 'あ';
+                break;
+
+            case 'col-i':
+
+                x = 'い';
+                break;
+
+            case 'col-u':
+
+                x = 'う';
+                break;
+
+            case 'col-e':
+
+                x = 'え';
+                break;
+
+        }
 
         let a = $('input[type="text"]').val() + 'あ';
 
-        $('input[type="text"]').val(a) ;
+        $('input[type="text"]').val($('input[type="text"]').val() + x);
+
 
     });
+
 
 </script>
 
