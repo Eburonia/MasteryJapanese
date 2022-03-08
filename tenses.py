@@ -15,10 +15,10 @@ def present_polite_positive(verb):
     list_ = ['', '']
 
     # Get the verb type (ru/u)
-    _ = verbs[verb]['type']
+    type_ = verbs[verb]['type']
 
     # When 'ru' verb
-    if type == 'ru':
+    if type_ == 'ru':
 
         # Return Hiragana
         list_[0] = verbs[verb]['hiragana'][:-1] + 'ます'
@@ -29,7 +29,7 @@ def present_polite_positive(verb):
         return list_
 
     # When 'u' verb
-    elif type == 'u':
+    elif type_ == 'u':
 
         # Return Hiragana
         list_[0] = verbs[verb]['hiragana'][:-1] + verb_table_shifter(
@@ -43,7 +43,7 @@ def present_polite_positive(verb):
     # When not 'ru' or 'u' verb
     else:
 
-        return 'error'
+        return 'ERROR 6'
 
 
 # Present Polite Negative
@@ -83,7 +83,7 @@ def present_polite_negative(verb):
     # When not 'ru' or 'u' verb
     else:
 
-        return 'error'
+        return 'ERROR 7'
 
 
 # Past Polite Positive
@@ -123,7 +123,7 @@ def past_polite_positive(verb):
     # When not 'ru' or 'u' verb
     else:
 
-        return 'error'
+        return 'ERROR 8'
 
 
 # Past Polite Negative
@@ -135,10 +135,10 @@ def past_polite_negative(verb):
     list_ = ['', '']
 
     # Get the verb type (ru/u)
-    _ = verbs[verb]['type']
+    type_ = verbs[verb]['type']
 
     # When 'ru' verb
-    if type == 'ru':
+    if type_ == 'ru':
 
         # Return Hiragana
         list_[0] = verbs[verb]['hiragana'][:-1] + 'ませんでした'
@@ -149,7 +149,7 @@ def past_polite_negative(verb):
         return list_
 
     # When 'u' verb
-    elif type == 'u':
+    elif type_ == 'u':
 
         # Return Hiragana
         list_[0] = verbs[verb]['hiragana'][:-1] + verb_table_shifter(
@@ -163,7 +163,7 @@ def past_polite_negative(verb):
     # When not 'ru' or 'u' verb
     else:
 
-        return 'error'
+        return 'ERROR 9'
 
 
 # Present Plain Positive
@@ -220,7 +220,7 @@ def present_plain_negative(verb):
     # When not 'ru' or 'u' verb
     else:
 
-        return 'error'
+        return 'ERROR 10'
 
 
 # Past Plain Positive
@@ -264,11 +264,11 @@ def past_plain_positive(verb):
 
         else:
 
-            return 'error'
+            return 'ERROR 11'
 
     else:
 
-        return 'error'
+        return 'ERROR 12'
 
 
 # Past Plain Negative
@@ -308,7 +308,7 @@ def past_plain_negative(verb):
     # When not 'ru' or 'u' verb
     else:
 
-        return 'error'
+        return 'ERROR 13'
 
 
 def present_polite_progressive_positive(verb):
@@ -346,7 +346,7 @@ def present_polite_progressive_positive(verb):
     # When not 'ru' or 'u' verb
     else:
 
-        return 'error'
+        return 'ERROR 14'
 
 
 def present_polite_progressive_negative(verb):
@@ -384,7 +384,7 @@ def present_polite_progressive_negative(verb):
     # When not 'ru' or 'u' verb
     else:
 
-        return 'error'
+        return 'ERROR 15'
 
 
 def past_polite_progressive_positive(verb):
@@ -422,7 +422,7 @@ def past_polite_progressive_positive(verb):
     # When not 'ru' or 'u' verb
     else:
 
-        return 'error'
+        return 'ERROR 16'
 
 
 def past_polite_progressive_negative(verb):
@@ -460,4 +460,4 @@ def past_polite_progressive_negative(verb):
     # When not 'ru' or 'u' verb
     else:
 
-        return 'error'
+        return 'ERROR 17'

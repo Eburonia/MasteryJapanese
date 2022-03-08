@@ -28,7 +28,7 @@ def te_form(verb, ret):
 
         else:
 
-            return 'ERROR'
+            return 'ERROR 1'
 
     # When 'u' verb
     elif type_ == 'u':
@@ -49,7 +49,7 @@ def te_form(verb, ret):
 
             else:
 
-                return 'ERROR'
+                return 'ERROR 2'
 
         elif last_syllable == 'く':
 
@@ -81,7 +81,7 @@ def te_form(verb, ret):
 
             else:
 
-                return 'ERROR'
+                return 'ERROR 3'
 
         elif last_syllable == 'る':
 
@@ -97,9 +97,9 @@ def te_form(verb, ret):
 
         else:
 
-            return 'error'
+            return 'ERROR 4'
 
     # When not 'ru' or 'u' verb
     else:
 
-        return 'error'
+        return 'ERROR 5'
