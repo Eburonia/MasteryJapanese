@@ -33,7 +33,7 @@
     #question-div {
       font-size: 30px;
       text-align: center;
-      background-color: salmon;
+      background-color: skyblue;
       padding: 20px;
     }
 
@@ -66,7 +66,11 @@
       display: block;
       margin: 10px 0;
       padding: 3px 5px;
-      font-size: 14px;
+      font-size: 20px;
+      background-color: skyblue;
+      border: 2px solid black;
+      cursor: pointer;
+      border-radius: 8px;
     }
 
     #reset-practice {
@@ -127,8 +131,8 @@
     .fa-hashtag {
         font-size: 16px;
         position: absolute;
-        right: 25px;
-        top: 10px;
+        right: 35px;
+        top: 15px;
     }
 
     #total-questions {
@@ -166,13 +170,13 @@
             {{ question }}
 
             <i class="fas fa-thumbs-up" title="Correct Answers"></i>
-            <p id="correct-answer">5</p>
+            <p id="correct-answer">{{ correct_answers }}</p>
 
             <i class="fas fa-thumbs-down" title="False Answers"></i>
-            <p id="false-answer">5</p>
+            <p id="false-answer">{{ false_answers }}</p>
 
-            <i class="fas fa-hashtag"></i>
-            <p id="total-questions">5</p>
+            <i class="fas fa-hashtag" title="Total number of questions"></i>
+            <p id="total-questions">{{ total_questions }}</p>
 
         </div>
 
@@ -185,7 +189,7 @@
                 <label for="answer">Answer:</label>
                 <input type="text" name="answer" id="answer" required>
 
-                <input type="submit" value="submit">
+                <input type="submit" value="check">
                 
                 <a href="{{ url_for('reset_practice') }}" id="reset-practice">Reset Practice</a>
 
@@ -224,6 +228,12 @@
             <div id="col-fu" class="keyboard-button">ふ</div>
             <div id="col-he" class="keyboard-button">へ</div>
             <div id="col-ho" class="keyboard-button">ほ</div>
+
+            <div id="col-ba" class="keyboard-button">ば</div>
+            <div id="col-bi" class="keyboard-button">び</div>
+            <div id="col-bu" class="keyboard-button">ぶ</div>
+            <div id="col-be" class="keyboard-button">べ</div>
+            <div id="col-bo" class="keyboard-button">ぼ</div>
 
             <div id="col-ma" class="keyboard-button">ま</div>
             <div id="col-mi" class="keyboard-button">み</div>
@@ -377,6 +387,26 @@
                 x = 'ほ';
                 break;
 
+            case 'col-ba':
+                x = 'ば';
+                break;
+
+            case 'col-bi':
+                x = 'び';
+                break;
+
+            case 'col-bu':
+                x = 'ぶ';
+                break;
+
+            case 'col-be':
+                x = 'べ';
+                break;
+
+            case 'col-bo':
+                x = 'ぼ';
+                break;
+
             case 'col-ma':
                 x = 'ま';
                 break;
@@ -483,6 +513,7 @@
 
 
     });
+
 
 
 </script>

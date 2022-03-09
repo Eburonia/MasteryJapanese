@@ -6,12 +6,19 @@ from flask import (Flask, render_template, request, url_for, redirect)
 from question_generator import generate_question
 from question_generator import reset_verbs
 from question_generator import show_answer
+from question_generator import get_number_of_verbs
 
 if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
+
+
+correct_answers = 0
+false_answers = 0
+total_questions = 0
+
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -25,6 +32,10 @@ def index():
     message_color = ''
     given_answer = ''
 
+    global correct_answers
+    global false_answers
+    global total_questions
+
     if request.method == 'POST':
 
         # Get the input answer from the end-user
@@ -33,21 +44,30 @@ def index():
         # Get the answer
         answer = show_answer()
 
-        # Compare answer with given answer
+        # When answer with given answer are equal (correct answer)
         if answer[0] == given_answer or answer[1] == given_answer:
 
+            # Check Hiragana answer
             if answer[0] == given_answer:
 
                 # Show Hiragana
                 answer = answer[0]
 
+                # Increment correct answers
+                correct_answers = correct_answers + 1
+
+            # Check Mazegaki answer
             elif answer[1] == given_answer:
 
                 # Show Mazegaki answer
                 answer = answer[1]
 
+                # Increment correct answers
+                correct_answers = correct_answers + 1
+
             else:
 
+                # Show error
                 answer = 'ERROR30'
 
             # Don't show given answer
@@ -56,6 +76,7 @@ def index():
             # Set correct color (green)
             message_color = 'limegreen'
 
+        # When answer with given answer are not equal (incorrect answer)
         else:
 
             # Get the input answer from the end-user
@@ -67,17 +88,26 @@ def index():
             # Show Hiragana and Mazegaki answer
             answer = f'{answer[1]}【{answer[0]}】'
 
+            # Increment false answers
+            false_answers = false_answers + 1
+
         # Generate question
         question = generate_question()
+
+
 
     else:
 
         # Generate question
         question = generate_question()
 
+        total_questions = get_number_of_verbs()
+
     return render_template(
         "index.html", question=question, answer=answer,
-        message_color=message_color, given_answer=given_answer)
+        message_color=message_color, given_answer=given_answer,
+        correct_answers=correct_answers, false_answers=false_answers,
+        total_questions=total_questions)
 
 
 @app.route("/reset_practice")
@@ -85,7 +115,16 @@ def reset_practice():
 
     ''' Reset the Verb set '''
 
+    global correct_answers
+    global false_answers
+    global total_questions
+
+    correct_answers = 0
+    false_answers = 0
+
     reset_verbs()
+
+    total_questions = get_number_of_verbs()
 
     return redirect(url_for("index"))
 

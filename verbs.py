@@ -67,4 +67,11 @@ verbs = {
     'past_en': 'learned',
   },
 
+  '開ける': {
+    'type': 'ru',
+    'hiragana': '開ける',
+    'present_en': 'open',
+    'past_en': 'opened',
+  },
+
 }

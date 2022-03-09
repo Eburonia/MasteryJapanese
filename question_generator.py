@@ -29,7 +29,16 @@ def reset_verbs():
     ''' Reset the verbs '''
 
     global Verbs
+
     Verbs = list(verbs)
+
+
+
+def get_number_of_verbs():
+
+    ''' Get the number of verbs '''
+
+    return len(Verbs)
 
 
 def generate_question():
@@ -82,6 +91,7 @@ def generate_question():
             return f'not {verbs[random_verb]["past_en"]} (plain)'
 
     else:
+        
         return 'end'
 
 
