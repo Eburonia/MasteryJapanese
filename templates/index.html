@@ -186,28 +186,31 @@
             <div id="col-ro" class="keyboard-button">ろ</div>
 
             <div id="col-wa" class="keyboard-button">わ</div>
-            <div id="" class="keyboard-button"></div>
-            <div id="" class="keyboard-button"></div>
-            <div id="" class="keyboard-button"></div>
+            <div class="keyboard-button">-</div>
+            <div class="keyboard-button">-</div>
+            <div class="keyboard-button">-</div>
             <div id="col-wo" class="keyboard-button">を</div>
 
             <div id="col-ya" class="keyboard-button">や</div>
-            <div id="" class="keyboard-button"></div>
+            <div class="keyboard-button">-</div>
             <div id="col-yu" class="keyboard-button">ゆ</div>
-            <div id="" class="keyboard-button"></div>
+            <div class="keyboard-button">-</div>
             <div id="col-yo" class="keyboard-button">よ</div>
 
             <div id="col-n" class="keyboard-button">ん</div>
-            <div id="" class="keyboard-button"></div>
-            <div id="" class="keyboard-button"></div>
-            <div id="" class="keyboard-button"></div>
-            <div id="" class="keyboard-button"></div>
+            <div id="col-double" class="keyboard-button">っ</div>
+            <div id="col-return" class="keyboard-button">r</div>
+            <div class="keyboard-button">-</div>
+            <div class="keyboard-button">-</div>
 
         </div>
 
     </main>
 
 <script>
+
+    // Focus text cursor on textbox
+    $('#answer').focus();
 
     $(document).on("click", ".keyboard-button", function () {
 
@@ -217,23 +220,201 @@
         switch(pushed) {
 
             case 'col-a':
-
                 x = 'あ';
                 break;
 
             case 'col-i':
-
                 x = 'い';
                 break;
 
             case 'col-u':
-
                 x = 'う';
                 break;
 
             case 'col-e':
-
                 x = 'え';
+                break;
+
+            case 'col-o':
+                x = 'お';
+                break;
+
+            case 'col-ka':
+                x = 'か';
+                break;
+
+            case 'col-ki':
+                x = 'き';
+                break;
+
+            case 'col-ku':
+                x = 'く';
+                break;
+
+            case 'col-ke':
+                x = 'け';
+                break;
+
+            case 'col-ko':
+                x = 'こ';
+                break;
+
+            case 'col-sa':
+                x = 'さ';
+                break;
+
+            case 'col-shi':
+                x = 'し';
+                break;
+
+            case 'col-su':
+                x = 'す';
+                break;
+
+            case 'col-se':
+                x = 'せ';
+                break;
+
+            case 'col-so':
+                x = 'そ';
+                break;
+
+            case 'col-ta':
+                x = 'た';
+                break;
+
+            case 'col-chi':
+                x = 'ち';
+                break;
+
+            case 'col-tsu':
+                x = 'つ';
+                break;
+
+            case 'col-te':
+                x = 'て';
+                break;
+
+            case 'col-to':
+                x = 'と';
+                break;
+
+            case 'col-ha':
+                x = 'は';
+                break;
+
+            case 'col-hi':
+                x = 'ひ';
+                break;
+
+            case 'col-fu':
+                x = 'ふ';
+                break;
+
+            case 'col-he':
+                x = 'へ';
+                break;
+
+            case 'col-ho':
+                x = 'ほ';
+                break;
+
+            case 'col-ma':
+                x = 'ま';
+                break;
+
+            case 'col-mi':
+                x = 'み';
+                break;
+
+            case 'col-mu':
+                x = 'む';
+                break;
+
+            case 'col-me':
+                x = 'め';
+                break;
+
+            case 'col-mo':
+                x = 'も';
+                break;
+
+            case 'col-na':
+                x = 'な';
+                break;
+
+            case 'col-ni':
+                x = 'に';
+                break;
+
+            case 'col-nu':
+                x = 'ぬ';
+                break;
+
+            case 'col-ne':
+                x = 'ね';
+                break;
+
+            case 'col-no':
+                x = 'の';
+                break;
+
+            case 'col-ra':
+                x = 'ら';
+                break;
+
+            case 'col-ri':
+                x = 'り';
+                break;
+
+            case 'col-ru':
+                x = 'る';
+                break;
+
+            case 'col-re':
+                x = 'れ';
+                break;
+
+            case 'col-ro':
+                x = 'ろ';
+                break;
+
+            case 'col-wa':
+                x = 'わ';
+                break;
+
+            case 'col-wo':
+                x = 'を';
+                break;
+
+            case 'col-ya':
+                x = 'や';
+                break;
+
+            case 'col-yu':
+                x = 'ゆ';
+                break;
+
+            case 'col-yo':
+                x = 'よ';
+                break;
+
+            case 'col-n':
+                x = 'ん';
+                break;
+
+            case 'col-n':
+                x = 'ん';
+                break;
+
+            case 'col-double':
+                x = 'っ';
+                break;
+
+            case 'col-return':
+   
+                $('input[type="text"]').val($('input[type="text"]').val().slice(0, -1));
+
                 break;
 
         }

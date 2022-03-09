@@ -36,14 +36,25 @@ def index():
         # Compare answer with given answer
         if answer[0] == given_answer or answer[1] == given_answer:
 
+            if answer[0] == given_answer:
+
+                # Show Hiragana
+                answer = answer[0]
+
+            elif answer[1] == given_answer:
+
+                # Show Mazegaki answer
+                answer = answer[1]
+
+            else:
+
+                answer = 'ERROR30'
+
             # Don't show given answer
             given_answer = ''
 
             # Set correct color (green)
             message_color = 'limegreen'
-
-            # Show Hiragana and Mazegaki answer
-            answer = f'{answer[1]}【{answer[0]}】'
 
         else:
 
