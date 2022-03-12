@@ -4,160 +4,23 @@
 
 <head>
 
+    <!-- meta -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- css files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 	 crossorigin="anonymous" />
 
+    <!-- page title -->
     <title>MasteryJapanese | Verb Practice</title>
-
-<style>
-
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 1px;
-    }
-
-    #question-div {
-      font-size: 30px;
-      text-align: center;
-      background-color: skyblue;
-      padding: 20px;
-    }
-
-    #answer-input-div {
-      padding: 20px;
-    }
-
-    #answer-p {
-        font-size: 30px;
-        text-align: center;
-    }
-
-    form {
-      width: 40%;
-      margin: 0 auto;
-    }
-    
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    input[type=text] {
-      width: 100%;
-      padding: 5px 10px;
-      font-size: 20px;
-    }
-
-    input[type=submit] {
-      display: block;
-      margin: 10px 0;
-      padding: 3px 5px;
-      font-size: 20px;
-      background-color: skyblue;
-      border: 2px solid black;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-
-    #reset-practice {
-        text-decoration: none;
-        color: blue;
-        margin-top: 20px;
-    }
-
-    /* Hiragana Keyboard */
-    #hiragana-keyboard {
-        box-sizing: border-box;
-        width: 40%;
-        margin: 0 auto;
-        overflow: hidden;
-    }
-
-    .keyboard-button {
-        background-color: rgb(20, 20, 20);
-        color: whitesmoke;
-        float: left;
-        width: calc(20% - 4px);
-        box-sizing: border-box;
-        text-align: center;
-        font-size: 30px;
-        margin: 2px;
-        cursor: pointer;
-        border-radius: 10px;
-    }
-
-    .fa-thumbs-up {
-        font-size: 20px;
-        position: absolute;
-        right: 140px;
-        top: 10px;
-    }
-
-    .fa-thumbs-down {
-        font-size: 20px;
-        position: absolute;
-        right: 85px;
-        top: 10px;
-    }
-
-    #correct-answer {
-        font-size: 16px;
-        position: absolute;
-        right: 125px;
-        top: 10px;
-    }
-
-    #false-answer {
-        font-size: 16px;
-        position: absolute;
-        right: 70px;
-        top: 10px;
-    }
-
-    .fa-hashtag {
-        font-size: 16px;
-        position: absolute;
-        right: 35px;
-        top: 15px;
-    }
-
-    #total-questions {
-        font-size: 16px;
-        position: absolute;
-        right: 10px;
-        top: 10px;
-    }
-
-    /* responsive design */
-    @media only screen and (max-width: 600px) {
-
-        form {
-            width: 100%;
-        }
-
-        #hiragana-keyboard {
-            width: 100%;
-            padding: 5px;
-        }
-
-    }
-
-</style>
-
 
 </head>
 
@@ -197,6 +60,7 @@
 
         </div>
 
+        <!--
         <div id="hiragana-keyboard">
 
             <div id="col-a" class="keyboard-button">あ</div>
@@ -273,6 +137,8 @@
 
         </div>
 
+    -->
+        
     </main>
 
 <script>
