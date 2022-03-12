@@ -13,6 +13,7 @@
   text-align: center;
   background-color: skyblue;
   padding: 20px;
+  min-height: 150px;
 }
 
 #answer-input-div {
@@ -32,71 +33,80 @@ form {
 label {
   display: block;
   margin-bottom: 5px;
+  font-size: 20px;
 }
 
 input[type=text] {
   width: 100%;
   padding: 5px 10px;
   font-size: 20px;
+  outline: none;
 }
 
 input[type=submit] {
   display: block;
   margin: 10px 0;
-  padding: 3px 5px;
+  padding: 3px 10px;
   font-size: 20px;
   background-color: skyblue;
-  border: 2px solid black;
   cursor: pointer;
   border-radius: 8px;
+  border: 0;
 }
 
 #reset-practice {
     text-decoration: none;
-    color: blue;
-    margin-top: 20px;
+    color: rgb(20, 20, 20);
+    font-size: 16px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
 }
 
 .fa-thumbs-up {
   font-size: 20px;
   position: absolute;
   right: 140px;
-  top: 10px;
+
 }
 
 .fa-thumbs-down {
   font-size: 20px;
   position: absolute;
   right: 85px;
-  top: 12px;
+  top: 2px;
 }
 
 #correct-answer {
   font-size: 16px;
   position: absolute;
   right: 150px;
-  top: 35px;
+  top: 25px;
 }
 
 #false-answer {
   font-size: 16px;
   position: absolute;
   right: 95px;
-  top: 35px;
+  top: 25px;
 }
 
 .fa-hashtag {
   font-size: 16px;
   position: absolute;
   right: 35px;
-  top: 15px;
 }
 
 #total-questions {
   font-size: 16px;
   position: absolute;
   right: 40px;
-  top: 35px;
+  top: 25px;
+}
+
+#stats {
+  float: right;
+  position: relative;
 }
 
 
@@ -132,6 +142,12 @@ input[type=submit] {
     #hiragana-keyboard {
         width: 100%;
         padding: 5px;
+    }
+
+    #stats {
+      float: none;
+      width: 50%;
+      margin: 0 auto;
     }
 
 }

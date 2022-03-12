@@ -30,16 +30,22 @@
 
         <div id="question-div">
             
+            <a href="{{ url_for('reset_practice') }}" id="reset-practice">Reset Practice</a>
+
             {{ question }}
 
-            <i class="fas fa-thumbs-up" title="Correct Answers"></i>
-            <p id="correct-answer">{{ correct_answers }}</p>
+            <div id="stats">
 
-            <i class="fas fa-thumbs-down" title="False Answers"></i>
-            <p id="false-answer">{{ false_answers }}</p>
+                <i class="fas fa-thumbs-up" title="Correct Answers"></i>
+                <p id="correct-answer">{{ correct_answers }}</p>
 
-            <i class="fas fa-hashtag" title="Total number of questions"></i>
-            <p id="total-questions">{{ total_questions }}</p>
+                <i class="fas fa-thumbs-down" title="False Answers"></i>
+                <p id="false-answer">{{ false_answers }}</p>
+
+                <i class="fas fa-hashtag" title="Total number of questions"></i>
+                <p id="total-questions">{{ total_questions }}</p>
+
+            </div>
 
         </div>
 
@@ -53,8 +59,6 @@
                 <input type="text" name="answer" id="answer" required>
 
                 <input type="submit" value="check">
-                
-                <a href="{{ url_for('reset_practice') }}" id="reset-practice">Reset Practice</a>
 
             </form>
 

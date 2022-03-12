@@ -17,9 +17,9 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 correct_answers = 0
 false_answers = 0
-total_questions = 0
 
-
+# Set the total number of verbs
+total_questions = get_number_of_verbs()
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -36,6 +36,7 @@ def index():
     global false_answers
     global total_questions
 
+    # POST request
     if request.method == 'POST':
 
         # Get the input answer from the end-user
@@ -44,65 +45,69 @@ def index():
         # Get the answer
         answer = show_answer()
 
-        # When answer with given answer are equal (correct answer)
-        if answer[0] == given_answer or answer[1] == given_answer:
+        if(false_answers + correct_answers < total_questions):
 
-            # Check Hiragana answer
-            if answer[0] == given_answer:
+            # When answer with given answer are equal (correct answer)
+            if answer[0] == given_answer or answer[1] == given_answer:
 
-                # Show Hiragana
-                answer = answer[0]
+                # Check Hiragana answer
+                if answer[0] == given_answer:
 
-                # Increment correct answers
-                correct_answers = correct_answers + 1
+                    # Show Hiragana
+                    answer = answer[0]
 
-            # Check Mazegaki answer
-            elif answer[1] == given_answer:
+                    # Increment correct answers
+                    correct_answers = correct_answers + 1
 
-                # Show Mazegaki answer
-                answer = answer[1]
+                # Check Mazegaki answer
+                elif answer[1] == given_answer:
 
-                # Increment correct answers
-                correct_answers = correct_answers + 1
+                    # Show Mazegaki answer
+                    answer = answer[1]
 
+                    # Increment correct answers
+                    correct_answers = correct_answers + 1
+
+                else:
+
+                    # Show error
+                    answer = 'ERROR30'
+
+                # Don't show given answer
+                given_answer = ''
+
+                # Set correct color (green)
+                message_color = 'limegreen'
+
+            # When answer with given answer are not equal (incorrect answer)
             else:
 
-                # Show error
-                answer = 'ERROR30'
+                # Get the input answer from the end-user
+                given_answer = request.form.get('answer')
 
-            # Don't show given answer
-            given_answer = ''
+                # Set wrong color (red)
+                message_color = 'red'
 
-            # Set correct color (green)
-            message_color = 'limegreen'
+                # Show Hiragana and Mazegaki answer
+                answer = f'{answer[1]}【{answer[0]}】'
 
-        # When answer with given answer are not equal (incorrect answer)
-        else:
+                # Increment false answers
+                false_answers = false_answers + 1
 
-            # Get the input answer from the end-user
-            given_answer = request.form.get('answer')
+        if get_number_of_verbs() != 0:
 
-            # Set wrong color (red)
-            message_color = 'red'
+            # Generate new question
+            question = generate_question()
 
-            # Show Hiragana and Mazegaki answer
-            answer = f'{answer[1]}【{answer[0]}】'
-
-            # Increment false answers
-            false_answers = false_answers + 1
-
-        # Generate question
-        question = generate_question()
-
-
-
+    # GET request
     else:
 
-        # Generate question
-        question = generate_question()
+        if get_number_of_verbs() != 0:
 
-        total_questions = get_number_of_verbs()
+            # Generate question
+            question = generate_question()
 
+    # Render the page
     return render_template(
         "index.html", question=question, answer=answer,
         message_color=message_color, given_answer=given_answer,
