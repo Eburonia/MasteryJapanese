@@ -32,7 +32,9 @@
             
             <a href="{{ url_for('reset_practice') }}" id="reset-practice">Reset Practice</a>
 
+            <div id="question">
             {{ question }}
+            </div>
 
             <div id="stats">
 
@@ -40,7 +42,7 @@
                 <p id="correct-answer">{{ correct_answers }}</p>
 
                 <i class="fas fa-thumbs-down" title="False Answers"></i>
-                <p id="false-answer">{{ false_answers }}</p>
+                <p id="false-answer">0</p>
 
                 <i class="fas fa-hashtag" title="Total number of questions"></i>
                 <p id="total-questions">{{ total_questions }}</p>
@@ -57,6 +59,9 @@
 
                 <label for="answer">Answer:</label>
                 <input type="text" name="answer" id="answer" required>
+
+                <input type="hidden" name="question" value="{{ question }}">
+                <input type="hidden" name="correct_answers" value="{{ correct_answers }}">
 
                 <input type="submit" value="check">
 
