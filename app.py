@@ -1,11 +1,10 @@
 ''' App.py '''
 
 import os
-from flask import (Flask, render_template, request, url_for, redirect)
+import random
 
-from question_generator import generate_question
-from question_generator import check_answer
-from question_generator import reset_verbs
+from flask import (Flask, render_template, request, url_for, redirect, session)
+from verbs import verbs
 
 
 if os.path.exists("env.py"):
@@ -20,51 +19,134 @@ def index():
 
     ''' This is the index page '''
 
+    # Assign question and answer
     question = None
     answer = None
-
-    # Get the given question from the question division
-    given_question = request.form.get('question')
-
-    # Get the given answer from the textfield
-    given_answer = request.form.get('answer')
 
     # POST request
     if request.method == 'POST':
 
-        # 
-        correct_answers = int(request.form.get('correct_answers'))
-        correct_answers = correct_answers + 1
+        # When verbs are in session_memory cookie
+        if len(session['session_memory']) > 0:
 
-        # Check the answer
-        answer = check_answer(given_question, given_answer)
+            # Check given answer with correct answer
+            answer = check_answer(request.form.get('answer'), session['answer'])
 
-        # Generate new question
-        question = generate_question()
-        question = question['question']
+            # Generate a new question
+            question_and_answer = generate_question_answer()
+
+            # Send question to front-end
+            question = question_and_answer['question']
+
+            # Save the answer in a cookie
+            session['answer'] = question_and_answer['answer']
+
+        # When no more verbs in session_memory cookie
+        else:
+
+            # Send question to front-end
+            question = 'END'
+
+            # Check given answer with correct answer
+            answer = check_answer(request.form.get('answer'), session['answer'])
 
     # GET request
     else:
 
-        # Set the correct answers to 0
-        correct_answers = 0
+        # Load the verbs in the session_memory cookie
+        session['session_memory'] = list(verbs)
 
-        # Generate new question
-        question = generate_question()
-        question = question['question']
+        # Generate a new question
+        question_and_answer = generate_question_answer()
 
-    # Render the page
-    return render_template("index.html", question=question, answer=answer,
-                           correct_answers=correct_answers)
+        # Send question to front-end
+        question = question_and_answer['question']
+
+        # Save the answer in a cookie
+        session['answer'] = question_and_answer['answer']
+
+        # Show no answer when first question is fired
+        answer = ''
+
+    # Render the practice page
+    return render_template("index.html",
+                           question=question, answer=answer)
 
 
-@app.route("/reset_practice")
-def reset_practice():
+def check_answer(given_answer, correct_answer):
 
-    ''' Reset the Verb set '''
+    ''' Check Answer '''
 
-    reset_verbs()
+    # Correct answer
+    if given_answer == correct_answer:
 
+        return 'correct answer'
+
+    # Incorrect answer
+    else:
+
+        return 'incorrect answer'
+
+
+def get_verb_from_session(session_memory):
+
+    '''
+    Return a verb from the session_memory and remove
+    it from the memory_session
+    '''
+
+    # Get the session_memory from cookie
+    session_memory = session['session_memory']
+
+    # If there is verbs in session
+    if len(session_memory) > 0:
+
+        # Get a random verb from the session_memory
+        random_verb = random.choice(list(session_memory))
+
+        # Remove this verb from the session_memory
+        session_memory.remove(random_verb)
+
+        # Update the session_memory coookie
+        session['session_memory'] = session_memory
+
+        # Return the verb
+        return random_verb
+
+    # When no more verbs in session
+    else:
+
+        # Return message
+        return 'end'
+
+
+def generate_question_answer():
+
+    ''' Generate Question '''
+
+    # Get a verb from the session_memory
+    verb = get_verb_from_session(session['session_memory'])
+
+    # Set the question and answer
+    question = verbs[verb]['present_en']
+    answer = verbs[verb]['hiragana']
+
+    # Combine the question and answer
+    question_and_answer = {'question': question, 'answer': answer}
+
+    # Return the question and answer
+    return question_and_answer
+
+
+@app.route("/reset_session_memory")
+def reset_session_memory():
+
+    ''' Reset session memory '''
+
+    # Reset the session_memory
+    session['session_memory'] = list(verbs)
+
+    # Return to index page
     return redirect(url_for("index"))
 
 

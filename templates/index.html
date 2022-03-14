@@ -30,7 +30,7 @@
 
         <div id="question-div">
             
-            <a href="{{ url_for('reset_practice') }}" id="reset-practice">Reset Practice</a>
+            <a href="{{ url_for('reset_session_memory') }}" id="reset-practice">Reset Practice</a>
 
             <div id="question">
             {{ question }}
@@ -64,6 +64,8 @@
                 <input type="hidden" name="correct_answers" value="{{ correct_answers }}">
 
                 <input type="submit" value="check">
+
+                {{ session_memory }}
 
             </form>
 
