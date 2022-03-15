@@ -5,6 +5,7 @@ import random
 
 from flask import (Flask, render_template, request, url_for, redirect, session)
 from verbs import verbs
+from tenses import present_polite_positive
 
 
 if os.path.exists("env.py"):
@@ -127,9 +128,15 @@ def generate_question_answer():
     # Get a verb from the session_memory
     verb = get_verb_from_session(session['session_memory'])
 
+    # Generate a random tense here !!!!
+    # generate_random_tense(verb, tenses)
+
+    # Get the question and answer
+    question_and_answer = present_polite_positive(verb)
+
     # Set the question and answer
-    question = verbs[verb]['present_en']
-    answer = verbs[verb]['hiragana']
+    question = question_and_answer[0]
+    answer = question_and_answer[1]
 
     # Combine the question and answer
     question_and_answer = {'question': question, 'answer': answer}
