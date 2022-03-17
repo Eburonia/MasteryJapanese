@@ -27,6 +27,10 @@ def index():
     color = None
     disable_input = ''
 
+    # Assign stats
+    correct_answers_stat = 5
+    incorrect_answers_stat = 8
+
     # POST request
     if request.method == 'POST':
 
@@ -98,7 +102,9 @@ def index():
     # Render the practice page
     return render_template("index.html",
                            question=question, answer=answer,
-                           color=color, disable_input=disable_input)
+                           color=color, disable_input=disable_input,
+                           correct_answers_stat=correct_answers_stat,
+                           incorrect_answers_stat=incorrect_answers_stat)
 
 
 def check_answer(given_answer, correct_answers):

@@ -34,22 +34,20 @@
 
             <div id="question">
             {{ question }}
-            </div>
-
-            <div id="stats">
+            
 
                 <i class="fas fa-thumbs-up" title="Correct Answers"></i>
-                <p id="correct-answer">{{ correct_answers }}</p>
+                <p id="correct-answer">{{ correct_answers_stat }}</p>
 
-                <i class="fas fa-thumbs-down" title="False Answers"></i>
-                <p id="false-answer">0</p>
+                <i class="fas fa-thumbs-down" title="Incorrect Answers"></i>
+                <p id="false-answer">{{ incorrect_answers_stat }}</p>
 
                 <i class="fas fa-hashtag" title="Total number of questions"></i>
-                <p id="total-questions">{{ total_questions }}</p>
+                <p id="total-questions">{{ total_questions }}0</p>
 
             </div>
 
-        </div>
+            </div>
 
         <div id="answer-input-div">
 

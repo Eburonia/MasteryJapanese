@@ -57,56 +57,56 @@ input[type=submit] {
 #reset-practice {
     text-decoration: none;
     color: rgb(20, 20, 20);
-    font-size: 16px;
+    font-size: 20px;
     position: absolute;
     left: 10px;
     top: 10px;
 }
 
+#reset-practice:hover {
+  text-decoration: underline;
+}
+
 .fa-thumbs-up {
   font-size: 20px;
   position: absolute;
-  right: 140px;
-
-}
-
-.fa-thumbs-down {
-  font-size: 20px;
-  position: absolute;
-  right: 85px;
-  top: 2px;
+  right: 120px;
+  top: 10px;
 }
 
 #correct-answer {
   font-size: 16px;
   position: absolute;
-  right: 150px;
-  top: 25px;
+  right: 130px;
+  top: 30px;
+}
+
+.fa-thumbs-down {
+  font-size: 20px;
+  position: absolute;
+  right: 80px;
+  top: 10px;
 }
 
 #false-answer {
   font-size: 16px;
   position: absolute;
   right: 95px;
-  top: 25px;
+  top: 30px;
 }
 
 .fa-hashtag {
   font-size: 16px;
   position: absolute;
-  right: 35px;
+  right: 20px;
+  top: 10px;
 }
 
 #total-questions {
   font-size: 16px;
   position: absolute;
   right: 40px;
-  top: 25px;
-}
-
-#stats {
-  float: right;
-  position: relative;
+  top: 30px;
 }
 
 
