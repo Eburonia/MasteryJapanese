@@ -6,6 +6,7 @@ import random
 from flask import (Flask, render_template, request, url_for, redirect, session)
 from verbs import verbs
 from tenses import present_polite_positive
+from tenses import present_polite_negative
 
 
 if os.path.exists("env.py"):
@@ -23,8 +24,8 @@ def index():
     # Assign question and answer
     question = None
     answer = None
-    test = None
     color = None
+    disable_input = ''
 
     # POST request
     if request.method == 'POST':
@@ -39,7 +40,7 @@ def index():
             answer = correct_answer['correct_answer']
 
             # Set green or red color (correct or incorrect answer)
-            color = correct_answer['answer_color']         
+            color = correct_answer['answer_color']
 
             # Generate a new question
             question_and_answer = generate_question_answer()
@@ -53,16 +54,23 @@ def index():
                 'answer_mazegaki': question_and_answer['answer_mazegaki']
             }
 
-            test = session['answers']['answer_hiragana'] + ' - ' + session['answers']['answer_mazegaki']
-
         # When no more verbs in session_memory cookie
         else:
 
             # Send question to front-end
-            question = 'END'
+            question = 'END SESSION'
 
             # Check given answer with correct answer
-            answer = check_answer(request.form.get('answer'), session['answers'])
+            correct_answer = check_answer(request.form.get('answer'), session['answers'])
+
+            # Set correct answer
+            answer = correct_answer['correct_answer']
+
+            # Set green or red color (correct or incorrect answer)
+            color = correct_answer['answer_color']
+
+            # Disable the input textbox
+            disable_input = 'disabled'
 
     # GET request
     else:
@@ -84,14 +92,13 @@ def index():
             'answer_mazegaki': question_and_answer['answer_mazegaki']
             }
 
-        test = session['answers']['answer_hiragana'] + ' - ' + session['answers']['answer_mazegaki']
-
         # Show no answer when first question is fired
         answer = ''
 
     # Render the practice page
     return render_template("index.html",
-                           question=question, answer=answer, test=test, color=color)
+                           question=question, answer=answer,
+                           color=color, disable_input=disable_input)
 
 
 def check_answer(given_answer, correct_answers):
@@ -164,6 +171,21 @@ def get_verb_from_session(session_memory):
         return 'end'
 
 
+def assign_random_tense(verb):
+
+    ''' Generate a random tense '''
+
+    tense_number = random.randint(1, 2)
+
+    if tense_number == 1:
+
+        return present_polite_positive(verb)
+
+    if tense_number == 2:
+
+        return present_polite_negative(verb)
+
+
 def generate_question_answer():
 
     ''' Generate Question '''
@@ -171,11 +193,8 @@ def generate_question_answer():
     # Get a verb from the session_memory
     verb = get_verb_from_session(session['session_memory'])
 
-    # Generate a random tense here !!!!
-    # generate_random_tense(verb, tenses)
-
-    # Get the question and answers
-    question_and_answer = present_polite_positive(verb)
+    # Assign a random tense to the verb
+    question_and_answer = assign_random_tense(verb)
 
     # Set the question and answers
     question = question_and_answer[0]
