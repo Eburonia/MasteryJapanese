@@ -55,7 +55,7 @@
 
             <form action="{{ url_for('index') }}" method="POST">
 
-                <p id="answer-p" style="color: {{ message_color }};">{{ answer }}</p>
+                <p id="answer-p" style="color: {{ color }};">{{ answer }}</p>
 
                 <label for="answer">Answer:</label>
                 <input type="text" name="answer" id="answer" required>
@@ -65,7 +65,7 @@
 
                 <input type="submit" value="check">
 
-                {{ session_memory }}
+                <p style="font-size: 24px;"> {{ test }} </p>
 
             </form>
 

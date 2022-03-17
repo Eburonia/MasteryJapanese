@@ -23,6 +23,8 @@ def index():
     # Assign question and answer
     question = None
     answer = None
+    test = None
+    color = None
 
     # POST request
     if request.method == 'POST':
@@ -31,7 +33,13 @@ def index():
         if len(session['session_memory']) > 0:
 
             # Check given answer with correct answer
-            answer = check_answer(request.form.get('answer'), session['answer'])
+            correct_answer = check_answer(request.form.get('answer'), session['answers'])
+
+            # Set correct answer
+            answer = correct_answer['correct_answer']
+
+            # Set green or red color (correct or incorrect answer)
+            color = correct_answer['answer_color']         
 
             # Generate a new question
             question_and_answer = generate_question_answer()
@@ -39,8 +47,13 @@ def index():
             # Send question to front-end
             question = question_and_answer['question']
 
-            # Save the answer in a cookie
-            session['answer'] = question_and_answer['answer']
+            # Save the answers in a cookie
+            session['answers'] = {
+                'answer_hiragana': question_and_answer['answer_hiragana'],
+                'answer_mazegaki': question_and_answer['answer_mazegaki']
+            }
+
+            test = session['answers']['answer_hiragana'] + ' - ' + session['answers']['answer_mazegaki']
 
         # When no more verbs in session_memory cookie
         else:
@@ -49,10 +62,12 @@ def index():
             question = 'END'
 
             # Check given answer with correct answer
-            answer = check_answer(request.form.get('answer'), session['answer'])
+            answer = check_answer(request.form.get('answer'), session['answers'])
 
     # GET request
     else:
+
+        # Start of practice session
 
         # Load the verbs in the session_memory cookie
         session['session_memory'] = list(verbs)
@@ -63,30 +78,58 @@ def index():
         # Send question to front-end
         question = question_and_answer['question']
 
-        # Save the answer in a cookie
-        session['answer'] = question_and_answer['answer']
+        # Save the answers in a cookie
+        session['answers'] = {
+            'answer_hiragana': question_and_answer['answer_hiragana'],
+            'answer_mazegaki': question_and_answer['answer_mazegaki']
+            }
+
+        test = session['answers']['answer_hiragana'] + ' - ' + session['answers']['answer_mazegaki']
 
         # Show no answer when first question is fired
         answer = ''
 
     # Render the practice page
     return render_template("index.html",
-                           question=question, answer=answer)
+                           question=question, answer=answer, test=test, color=color)
 
 
-def check_answer(given_answer, correct_answer):
+def check_answer(given_answer, correct_answers):
 
     ''' Check Answer '''
 
-    # Correct answer
-    if given_answer == correct_answer:
+    # Correct Hiragana answer
+    if given_answer == correct_answers['answer_hiragana']:
 
-        return 'correct answer'
+        # Return correct Hiragana answer + green color
+        ret = {
+            'correct_answer': correct_answers['answer_hiragana'],
+            'answer_color': 'limegreen'
+            }
+
+        return ret
+
+    # Correct Mazegaki answer
+    elif given_answer == correct_answers['answer_mazegaki']:
+
+        # Return correct Mazegaki answer + green color
+        ret = {
+            'correct_answer': correct_answers['answer_mazegaki'],
+            'answer_color': 'limegreen'
+            }
+
+        return ret
 
     # Incorrect answer
     else:
 
-        return 'incorrect answer'
+        # Return correct Mazegaki answer + red color
+        ret = {
+            'correct_answer': correct_answers['answer_mazegaki'],
+            'answer_color': 'red'
+            }
+
+        return ret
 
 
 def get_verb_from_session(session_memory):
@@ -131,17 +174,22 @@ def generate_question_answer():
     # Generate a random tense here !!!!
     # generate_random_tense(verb, tenses)
 
-    # Get the question and answer
+    # Get the question and answers
     question_and_answer = present_polite_positive(verb)
 
-    # Set the question and answer
+    # Set the question and answers
     question = question_and_answer[0]
-    answer = question_and_answer[1]
+    answer_hiragana = question_and_answer[1]
+    answer_mazegaki = question_and_answer[2]
 
-    # Combine the question and answer
-    question_and_answer = {'question': question, 'answer': answer}
+    # Combine the question and answers
+    question_and_answer = {
+        'question': question,
+        'answer_hiragana': answer_hiragana,
+        'answer_mazegaki': answer_mazegaki
+        }
 
-    # Return the question and answer
+    # Return the question and answers
     return question_and_answer
 
 

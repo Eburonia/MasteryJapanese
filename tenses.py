@@ -20,7 +20,7 @@ def present_polite_positive(verb):
     # When 'ru' verb
     if type_ == 'ru':
 
-        # Return HiraganaReturn English
+        # Return English
         list_[0] = verbs[verb]['present_en'] + ' (polite)'
 
         # Return Hiragana
@@ -34,14 +34,14 @@ def present_polite_positive(verb):
     # When 'u' verb
     elif type_ == 'u':
 
-        # Return Hiragana
+        # Return English
         list_[0] = verbs[verb]['present_en'] + ' (polite)'
 
-        # Return Mazegaki (Kanji + Hiragana)
+        # Return HiraganaReturn Mazegaki (Kanji + Hiragana)
         list_[1] = verbs[verb]['hiragana'][:-1] + verb_table_shifter(
                                                     verb, 2) + 'ます'
 
-        # Return English
+        # Return Mazegaki (Kanji + Hiragana)
         list_[2] = verb[:-1] + verb_table_shifter(verb, 2) + 'ます'
 
         return list_
