@@ -123,6 +123,8 @@ def index():
         # Show no answer when first question is fired
         answer = ''
 
+    session['correct_answers_stat'] = 0
+
     # Render the practice page
     return render_template("index.html",
                            question=question, answer=answer,
