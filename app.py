@@ -105,6 +105,9 @@ def index():
         # Get the number of verbs
         session['total_number_of_verbs'] = len(verbs)
 
+        session['correct_answers_stat'] = 0
+        session['incorrect_answers_stat'] = 0
+
         # Load the verbs in the session_memory cookie
         session['session_memory'] = list(verbs)
 
@@ -122,9 +125,6 @@ def index():
 
         # Show no answer when first question is fired
         answer = ''
-
-    session['correct_answers_stat'] = 0
-    session['incorrect_answers_stat'] = 0
 
     # Render the practice page
     return render_template("index.html",
