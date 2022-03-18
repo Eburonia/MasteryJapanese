@@ -35,15 +35,14 @@
             <div id="question">
             {{ question }}
             
-
                 <i class="fas fa-thumbs-up" title="Correct Answers"></i>
-                <p id="correct-answer">{{ correct_answers_stat }}</p>
+                <p id="correct-answers-stat" name="correct-answers-stat">{{ correct_answers_stat }}</p>
 
                 <i class="fas fa-thumbs-down" title="Incorrect Answers"></i>
-                <p id="false-answer">{{ incorrect_answers_stat }}</p>
+                <p id="incorrect-answers-stat" name="incorrect-answers-stat">{{ incorrect_answers_stat }}</p>
 
                 <i class="fas fa-hashtag" title="Total number of questions"></i>
-                <p id="total-questions">{{ total_questions }}0</p>
+                <p id="total-questions">{{ number_of_verbs }}</p>
 
             </div>
 
@@ -61,7 +60,7 @@
                 <input type="hidden" name="question" value="{{ question }}">
                 <input type="hidden" name="correct_answers" value="{{ correct_answers }}">
 
-                <input type="submit" value="check">
+                <input type="submit" value="check" {{ disable_button }}>
 
                 <p style="font-size: 24px;"> {{ test }} </p>
 

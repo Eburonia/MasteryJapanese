@@ -26,10 +26,7 @@ def index():
     answer = None
     color = None
     disable_input = ''
-
-    # Assign stats
-    correct_answers_stat = 5
-    incorrect_answers_stat = 8
+    disable_button = ''
 
     # POST request
     if request.method == 'POST':
@@ -39,6 +36,15 @@ def index():
 
             # Check given answer with correct answer
             correct_answer = check_answer(request.form.get('answer'), session['answers'])
+
+            # Increment correct answer or incorrect answer
+            if correct_answer['answer_correct_or_incorrect'] is True:
+
+                session['correct_answers_stat'] = session['correct_answers_stat'] + 1
+
+            else:
+
+                session['incorrect_answers_stat'] = session['incorrect_answers_stat'] + 1
 
             # Set correct answer
             answer = correct_answer['correct_answer']
@@ -67,6 +73,18 @@ def index():
             # Check given answer with correct answer
             correct_answer = check_answer(request.form.get('answer'), session['answers'])
 
+            # Increment correct answer or incorrect answer
+            if correct_answer['answer_correct_or_incorrect'] is True:
+
+                session['correct_answers_stat'] = session['correct_answers_stat'] + 1
+
+            else:
+
+                session['incorrect_answers_stat'] = session['incorrect_answers_stat'] + 1
+
+            # Check given answer with correct answer
+            correct_answer = check_answer(request.form.get('answer'), session['answers'])
+
             # Set correct answer
             answer = correct_answer['correct_answer']
 
@@ -76,10 +94,16 @@ def index():
             # Disable the input textbox
             disable_input = 'disabled'
 
+            # Disable the answer button
+            disable_button = 'disabled'
+
     # GET request
     else:
 
         # Start of practice session
+
+        # Get the number of verbs
+        session['total_number_of_verbs'] = len(verbs)
 
         # Load the verbs in the session_memory cookie
         session['session_memory'] = list(verbs)
@@ -103,8 +127,10 @@ def index():
     return render_template("index.html",
                            question=question, answer=answer,
                            color=color, disable_input=disable_input,
-                           correct_answers_stat=correct_answers_stat,
-                           incorrect_answers_stat=incorrect_answers_stat)
+                           correct_answers_stat=session['correct_answers_stat'],
+                           incorrect_answers_stat=session['incorrect_answers_stat'],
+                           number_of_verbs=session['total_number_of_verbs'],
+                           disable_button=disable_button)
 
 
 def check_answer(given_answer, correct_answers):
@@ -117,7 +143,8 @@ def check_answer(given_answer, correct_answers):
         # Return correct Hiragana answer + green color
         ret = {
             'correct_answer': correct_answers['answer_hiragana'],
-            'answer_color': 'limegreen'
+            'answer_color': 'limegreen',
+            'answer_correct_or_incorrect': True
             }
 
         return ret
@@ -128,7 +155,8 @@ def check_answer(given_answer, correct_answers):
         # Return correct Mazegaki answer + green color
         ret = {
             'correct_answer': correct_answers['answer_mazegaki'],
-            'answer_color': 'limegreen'
+            'answer_color': 'limegreen',
+            'answer_correct_or_incorrect': True
             }
 
         return ret
@@ -139,7 +167,8 @@ def check_answer(given_answer, correct_answers):
         # Return correct Mazegaki answer + red color
         ret = {
             'correct_answer': correct_answers['answer_mazegaki'],
-            'answer_color': 'red'
+            'answer_color': 'red',
+            'answer_correct_or_incorrect': False
             }
 
         return ret
@@ -225,6 +254,11 @@ def reset_session_memory():
 
     # Reset the session_memory
     session['session_memory'] = list(verbs)
+
+    # Reset the stats
+    session['correct_answers_stat'] = 0
+    session['incorrect_answers_stat'] = 0
+    session['total_number_of_verbs'] = 0
 
     # Return to index page
     return redirect(url_for("index"))

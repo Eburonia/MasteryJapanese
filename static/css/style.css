@@ -70,43 +70,43 @@ input[type=submit] {
 .fa-thumbs-up {
   font-size: 20px;
   position: absolute;
-  right: 120px;
+  right: 100px;
   top: 10px;
 }
 
-#correct-answer {
+#correct-answers-stat {
   font-size: 16px;
   position: absolute;
-  right: 130px;
-  top: 30px;
+  right: 105px;
+  top: 35px;
 }
 
 .fa-thumbs-down {
   font-size: 20px;
   position: absolute;
-  right: 80px;
-  top: 10px;
+  right: 60px;
+  top: 12px;
 }
 
-#false-answer {
+#incorrect-answers-stat {
   font-size: 16px;
   position: absolute;
-  right: 95px;
-  top: 30px;
+  right: 62px;
+  top: 35px;
 }
 
 .fa-hashtag {
   font-size: 16px;
   position: absolute;
-  right: 20px;
-  top: 10px;
+  right: 30px;
+  top: 12px;
 }
 
 #total-questions {
   font-size: 16px;
   position: absolute;
-  right: 40px;
-  top: 30px;
+  right: 30px;
+  top: 35px;
 }
 
 
