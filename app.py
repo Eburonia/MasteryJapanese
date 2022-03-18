@@ -105,6 +105,7 @@ def index():
         # Get the number of verbs
         session['total_number_of_verbs'] = len(verbs)
 
+        # Set the correct_answers_stat and incorrect_answers_stat cookies
         session['correct_answers_stat'] = 0
         session['incorrect_answers_stat'] = 0
 
@@ -270,4 +271,4 @@ def reset_session_memory():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)
