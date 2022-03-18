@@ -124,6 +124,7 @@ def index():
         answer = ''
 
     session['correct_answers_stat'] = 0
+    session['incorrect_answers_stat'] = 0
 
     # Render the practice page
     return render_template("index.html",
