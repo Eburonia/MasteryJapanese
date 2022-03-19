@@ -29,24 +29,41 @@
     <main>
 
         <div id="question-div">
-            
-            <a href="{{ url_for('reset_session_memory') }}" id="reset-practice">Reset Practice</a>
 
-            <div id="question">
             {{ question }}
-            
-                <i class="fas fa-thumbs-up" title="Correct Answers"></i>
-                <p id="correct-answers-stat" name="correct-answers-stat">{{ correct_answers_stat }}</p>
 
-                <i class="fas fa-thumbs-down" title="Incorrect Answers"></i>
-                <p id="incorrect-answers-stat" name="incorrect-answers-stat">{{ incorrect_answers_stat }}</p>
+        </div>
 
-                <i class="fas fa-hashtag" title="Total number of questions"></i>
-                <p id="total-questions">{{ number_of_verbs }}</p>
+        <div id="stats-div">
 
-            </div>
+            <ul>
 
-            </div>
+                <li>
+                    <i class="fas fa-thumbs-up" title="Correct Answers"></i>
+                    <p id="correct-answers-stat" name="correct-answers-stat">{{ correct_answers_stat }}</p>
+                </li>
+
+                <li>
+                    <i class="fas fa-thumbs-down" title="Incorrect Answers"></i>
+                    <p id="incorrect-answers-stat" name="incorrect-answers-stat">{{ incorrect_answers_stat }}</p>
+                </li>
+
+                <li>
+                    <i class="fas fa-hashtag" title="Total number of questions"></i>
+                    <p id="total-questions">{{ number_of_verbs }}</p>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div id="reset-practice-div">
+
+            <a href="{{ url_for('reset_session_memory') }}">Reset Practice</a>
+
+        </div>
+
 
         <div id="answer-input-div">
 
@@ -67,6 +84,8 @@
             </form>
 
         </div>
+
+
 
         <!--
         <div id="hiragana-keyboard">
