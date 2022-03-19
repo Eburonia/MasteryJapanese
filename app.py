@@ -7,6 +7,8 @@ from flask import (Flask, render_template, request, url_for, redirect, session)
 from verbs import verbs
 from tenses import present_polite_positive
 from tenses import present_polite_negative
+from tenses import past_polite_positive
+from tenses import past_polite_negative
 
 
 if os.path.exists("env.py"):
@@ -27,6 +29,7 @@ def index():
     color = None
     disable_input = ''
     disable_button = ''
+    your_answer = ''
 
     # POST request
     if request.method == 'POST':
@@ -51,6 +54,10 @@ def index():
 
             # Set green or red color (correct or incorrect answer)
             color = correct_answer['answer_color']
+
+            if color == 'red':
+
+                your_answer = request.form.get('answer')
 
             # Generate a new question
             question_and_answer = generate_question_answer()
@@ -134,7 +141,8 @@ def index():
                            correct_answers_stat=session['correct_answers_stat'],
                            incorrect_answers_stat=session['incorrect_answers_stat'],
                            number_of_verbs=session['total_number_of_verbs'],
-                           disable_button=disable_button)
+                           disable_button=disable_button,
+                           your_answer=your_answer)
 
 
 def check_answer(given_answer, correct_answers):
@@ -214,7 +222,7 @@ def assign_random_tense(verb):
 
     ''' Generate a random tense '''
 
-    tense_number = random.randint(1, 2)
+    tense_number = random.randint(1, 4)
 
     if tense_number == 1:
 
@@ -223,6 +231,14 @@ def assign_random_tense(verb):
     if tense_number == 2:
 
         return present_polite_negative(verb)
+
+    if tense_number == 3:
+
+        return past_polite_positive(verb)
+
+    if tense_number == 4:
+
+        return past_polite_negative(verb)
 
 
 def generate_question_answer():

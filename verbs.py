@@ -69,7 +69,7 @@ verbs = {
 
   '開ける': {
     'type': 'ru',
-    'hiragana': '開ける',
+    'hiragana': 'あける',
     'present_en': 'open',
     'past_en': 'opened',
   },
