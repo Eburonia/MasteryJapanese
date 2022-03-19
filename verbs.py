@@ -74,4 +74,18 @@ verbs = {
     'past_en': 'opened',
   },
 
+  '閉める': {
+    'type': 'ru',
+    'hiragana': 'しめる',
+    'present_en': 'close',
+    'past_en': 'closed',
+  },
+
+  '読む': {
+    'type': 'u',
+    'hiragana': 'よむ',
+    'present_en': 'read',
+    'past_en': 'read (past)',
+  },
+
 }
