@@ -225,6 +225,8 @@
     // Focus text cursor on textbox
     $('#answer').focus();
 
+    let test = ''
+
     $(document).on("click", ".key", function () {
 
         let pushed = $(this).attr('id');
@@ -386,17 +388,31 @@
 
         }
 
-        let a = $('input[type="text"]').val() + 'あ';
-
         $('input[type="text"]').val($('input[type="text"]').val() + x);
 
+        test = test + x
+
+        if(test == 'ka') {
+
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'か'
+            $('input[type="text"]').val(v)
+            test =''
+
+        }
+
+        if(test == 'sa') {
+
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'さ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
 
     });
 
-
-
 </script>
 
-</body>
+</body>     
 
 </html>
