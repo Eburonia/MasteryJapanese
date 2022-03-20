@@ -123,6 +123,28 @@
                 user-select: none;
             }
 
+            .key-disable {
+                float: left;
+                width: calc(10% - 2px);
+                height: 40px;
+                box-sizing: border-box;
+                margin: 1px;
+                background-color: lightgray;
+                border: 2px solid rgb(40, 40, 40);
+                color: rgb(40, 40, 40);
+                text-align: center;
+                padding-top: 8px;
+                border-radius: 8px;
+
+                /* no text select */
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
             #key-return {
                 float: left;
                 width: calc(10% - 2px);
@@ -197,22 +219,22 @@
 
             <div id="key-row1">
 
-                <div id="key-1" class="key">1</div>
-                <div id="key-2" class="key">2</div>
-                <div id="key-3" class="key">3</div>
-                <div id="key-4" class="key">4</div>
-                <div id="key-5" class="key">5</div>
-                <div id="key-6" class="key">6</div>
-                <div id="key-7" class="key">7</div>
-                <div id="key-8" class="key">8</div>
-                <div id="key-9" class="key">9</div>
-                <div id="key-0" class="key">0</div>
+                <div id="key-1" class="key-disable">1</div>
+                <div id="key-2" class="key-disable">2</div>
+                <div id="key-3" class="key-disable">3</div>
+                <div id="key-4" class="key-disable">4</div>
+                <div id="key-5" class="key-disable">5</div>
+                <div id="key-6" class="key-disable">6</div>
+                <div id="key-7" class="key-disable">7</div>
+                <div id="key-8" class="key-disable">8</div>
+                <div id="key-9" class="key-disable">9</div>
+                <div id="key-0" class="key-disable">0</div>
 
             </div>
 
             <div id="key-row2">
 
-                <div id="key-q" class="key">q</div>
+                <div id="key-q" class="key-disable">q</div>
                 <div id="key-w" class="key">w</div>
                 <div id="key-e" class="key">e</div>
                 <div id="key-r" class="key">r</div>
@@ -235,17 +257,17 @@
                 <div id="key-h" class="key">h</div>
                 <div id="key-j" class="key">j</div>
                 <div id="key-k" class="key">k</div>
-                <div id="key-l" class="key">l</div>
-                <div id="key-return" class="key">return</div>
+                <div id="key-l" class="key-disable">l</div>
+                <div id="key-return" class="key"><i class="fa-solid fa-left-long"></i></div>
 
             </div>
 
             <div id="key-row4">
 
                 <div id="key-z" class="key">z</div>
-                <div id="key-x" class="key">x</div>
+                <div id="key-x" class="key-disable">x</div>
                 <div id="key-c" class="key">c</div>
-                <div id="key-v" class="key">v</div>
+                <div id="key-v" class="key-disable">v</div>
                 <div id="key-b" class="key">b</div>
                 <div id="key-n" class="key">n</div>
                 <div id="key-m" class="key">m</div>
@@ -427,6 +449,7 @@
 
             case 'key-backspace':
                 $('input[type="text"]').val($('input[type="text"]').val().slice(0, -1));
+                test = ''
                 break;
 
         }
@@ -435,19 +458,563 @@
 
         test = test + x
 
-        if(test == 'ka') {
+        if(test == ' ') {
+            test =''
+        }
 
+        if(test == 'shi') {
+            let v = $('input[type="text"]').val().slice(0, -3)
+            v = v + 'し'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'tsu') {
+            let v = $('input[type="text"]').val().slice(0, -3)
+            v = v + 'つ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'chi') {
+            let v = $('input[type="text"]').val().slice(0, -3)
+            v = v + 'ち'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'tta') {
+            let v = $('input[type="text"]').val().slice(0, -3)
+            v = v + 'った'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'kka') {
+            let v = $('input[type="text"]').val().slice(0, -3)
+            v = v + 'っか'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ppa') {
+            let v = $('input[type="text"]').val().slice(0, -3)
+            v = v + 'っぱ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'sshi') {
+            let v = $('input[type="text"]').val().slice(0, -4)
+            v = v + 'っし'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+
+        if(test == 'a') {
+            let v = $('input[type="text"]').val().slice(0, -1)
+            v = v + 'あ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'i') {
+            let v = $('input[type="text"]').val().slice(0, -1)
+            v = v + 'い'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'u') {
+            let v = $('input[type="text"]').val().slice(0, -1)
+            v = v + 'う'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'e') {
+            let v = $('input[type="text"]').val().slice(0, -1)
+            v = v + 'え'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'o') {
+            let v = $('input[type="text"]').val().slice(0, -1)
+            v = v + 'お'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ka') {
             let v = $('input[type="text"]').val().slice(0, -2)
             v = v + 'か'
             $('input[type="text"]').val(v)
             test =''
-
         }
 
-        if(test == 'sa') {
+        if(test == 'ki') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'き'
+            $('input[type="text"]').val(v)
+            test =''
+        }
 
+        if(test == 'ku') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'く'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ke') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'け'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ko') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'こ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+
+        if(test == 'ga') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'が'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'gi') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ぎ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'gu') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ぐ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ge') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'げ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'go') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ご'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+
+
+
+        if(test == 'sa') {
             let v = $('input[type="text"]').val().slice(0, -2)
             v = v + 'さ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'shi') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'し'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'su') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'す'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'se') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'せ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'so') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'そ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+
+
+        if(test == 'za') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ざ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ji') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'じ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'zu') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ず'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ze') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ぜ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'zo') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ぞ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+
+
+
+
+
+
+        if(test == 'ta') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'た'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'chi') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ち'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'tsu') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'つ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'te') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'て'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'to') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'と'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+
+
+        if(test == 'da') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'だ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'de') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'で'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'do') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ど'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+
+
+
+        if(test == 'na') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'な'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ni') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'に'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'nu') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ぬ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ne') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ね'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'no') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'の'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ha') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'は'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'hi') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ひ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'fu') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ふ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'he') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'へ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ho') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ほ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+
+
+        if(test == 'ba') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ば'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'bi') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'び'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'bu') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ぶ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'be') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'べ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'bo') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ぼ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+
+
+        if(test == 'pa') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ぱ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'pi') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ぴ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'pu') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ぷ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'pe') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ぺ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'po') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ぽ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+
+
+
+        if(test == 'ma') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ま'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'mi') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'み'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'mu') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'む'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'me') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'め'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'mo') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'も'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ya') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'や'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'yu') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ゆ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'yo') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'よ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ra') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ら'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ri') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'り'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ru') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'る'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 're') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'れ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'ro') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ろ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'wa') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'わ'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'wo') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'を'
+            $('input[type="text"]').val(v)
+            test =''
+        }
+
+        if(test == 'nn') {
+            let v = $('input[type="text"]').val().slice(0, -2)
+            v = v + 'ん'
             $('input[type="text"]').val(v)
             test =''
         }
