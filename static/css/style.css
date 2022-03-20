@@ -145,6 +145,7 @@ input[type=submit] {
     width: 75%;
   }
 
+
 }
 
 /* responsive design max 600px */
@@ -157,6 +158,10 @@ input[type=submit] {
     #hiragana-keyboard {
         width: 100%;
         padding: 5px;
+    }
+
+    #keyboard {
+      width: 100%;
     }
 
     #stats-div {
