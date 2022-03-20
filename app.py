@@ -5,10 +5,16 @@ import random
 
 from flask import (Flask, render_template, request, url_for, redirect, session)
 from verbs import verbs
+
 from tenses import present_polite_positive
 from tenses import present_polite_negative
 from tenses import past_polite_positive
 from tenses import past_polite_negative
+
+from tenses import present_plain_positive
+from tenses import present_plain_negative
+from tenses import past_plain_positive
+from tenses import past_plain_negative
 
 
 if os.path.exists("env.py"):
@@ -222,7 +228,7 @@ def assign_random_tense(verb):
 
     ''' Generate a random tense '''
 
-    tense_number = random.randint(1, 4)
+    tense_number = random.randint(1, 8)
 
     if tense_number == 1:
 
@@ -239,6 +245,22 @@ def assign_random_tense(verb):
     if tense_number == 4:
 
         return past_polite_negative(verb)
+
+    if tense_number == 5:
+
+        return present_plain_positive(verb)
+
+    if tense_number == 6:
+
+        return present_plain_negative(verb)
+
+    if tense_number == 7:
+
+        return past_plain_positive(verb)
+
+    if tense_number == 8:
+
+        return past_plain_negative(verb)
 
 
 def generate_question_answer():

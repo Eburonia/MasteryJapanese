@@ -196,13 +196,16 @@ def present_plain_positive(verb):
     ''' Present Plain Positive '''
 
     # Declare Hiragana and Mazegaki
-    list_ = ['', '']
+    list_ = ['', '', '']
+
+    # Return English
+    list_[0] = verbs[verb]['present_en'] + ' (plain)'
 
     # Return Hiragana
-    list_[0] = verbs[verb]['hiragana']
+    list_[1] = verbs[verb]['hiragana']
 
     # Return Mazegaki (Kanji + Hiragana)
-    list_[1] = verb
+    list_[2] = verb
 
     return list_
 
@@ -213,7 +216,7 @@ def present_plain_negative(verb):
     ''' Present Plain Negative '''
 
     # Declare Hiragana and Mazegaki
-    list_ = ['', '']
+    list_ = ['', '', '']
 
     # Get the verb type (ru/u)
     type_ = verbs[verb]['type']
@@ -221,22 +224,28 @@ def present_plain_negative(verb):
     # When 'ru' verb
     if type_ == 'ru':
 
+        # Return English
+        list_[0] = 'not ' + verbs[verb]['present_en'] + ' (plain)'
+
         # Return Hiragana
-        list_[0] = verbs[verb]['hiragana'][:-1] + 'ない'
+        list_[1] = verbs[verb]['hiragana'][:-1] + 'ない'
 
         # Return Mazegaki (Kanji + Hiragana)
-        list_[1] = verb[:-1] + 'ない'
+        list_[2] = verb[:-1] + 'ない'
 
         return list_
 
     # When 'u' verb
     elif type_ == 'u':
 
+        # Return English
+        list_[0] = 'not ' + verbs[verb]['present_en'] + ' (plain)'
+
         # Return Hiragana
-        list_[0] = verb[:-1] + verb_table_shifter(verb, 1) + 'ない'
+        list_[1] = verb[:-1] + verb_table_shifter(verb, 1) + 'ない'
 
         # Return Mazegaki (Kanji + Hiragana)
-        list_[1] = verbs[verb]['hiragana'][:-1] + verb_table_shifter(
+        list_[2] = verbs[verb]['hiragana'][:-1] + verb_table_shifter(
                                                     verb, 1) + 'ない'
 
         return list_
@@ -253,7 +262,7 @@ def past_plain_positive(verb):
     ''' Past Plain Positive '''
 
     # Declare Hiragana and Mazegaki
-    list_ = ['', '']
+    list_ = ['', '', '']
 
     # Get the verb type (ru/u)
     type_ = verbs[verb]['type']
@@ -261,28 +270,34 @@ def past_plain_positive(verb):
     # When 'ru' verb
     if type_ == 'ru':
 
+        # Return English
+        list_[0] = verbs[verb]['past_en'] + ' (plain)'
+
         # Return Hiragana
-        list_[0] = verbs[verb]['hiragana'][:-1] + 'た'
+        list_[1] = verbs[verb]['hiragana'][:-1] + 'た'
 
         # Return Mazegaki (Kanji + Hiragana)
-        list_[1] = te_form(verb, 0)[:-1] + 'た'
+        list_[2] = te_form(verb, 0)[:-1] + 'た'
 
         return list_
 
     # When 'u' verb
     elif type_ == 'u':
 
+        # Return English
+        list_[0] = verbs[verb]['past_en'] + ' (plain)'
+
         if te_form(verb, 0)[-1:] == 'て':
 
-            list_[0] = te_form(verb, 0)[:-1] + 'た'
-            list_[1] = te_form(verb, 1)[:-1] + 'た'
+            list_[1] = te_form(verb, 0)[:-1] + 'た'
+            list_[2] = te_form(verb, 1)[:-1] + 'た'
 
             return list_
 
         elif te_form(verb, 0)[-1:] == 'で':
 
-            list_[0] = te_form(verb, 0)[:-1] + 'だ'
-            list_[1] = te_form(verb, 1)[:-1] + 'だ'
+            list_[1] = te_form(verb, 0)[:-1] + 'だ'
+            list_[2] = te_form(verb, 1)[:-1] + 'だ'
 
             return list_
 
@@ -301,7 +316,7 @@ def past_plain_negative(verb):
     ''' Past Plain Negative '''
 
     # Declare Hiragana and Mazegaki
-    list_ = ['', '']
+    list_ = ['', '', '']
 
     # Get the verb type (ru/u)
     type_ = verbs[verb]['type']
@@ -309,22 +324,28 @@ def past_plain_negative(verb):
     # When 'ru' verb
     if type_ == 'ru':
 
+        # Return English
+        list_[0] = 'not ' + verbs[verb]['past_en'] + ' (plain)'
+
         # Return Hiragana
-        list_[0] = verbs[verb]['hiragana'][:-1] + 'なかった'
+        list_[1] = verbs[verb]['hiragana'][:-1] + 'なかった'
 
         # Return Mazegaki (Kanji + Hiragana)
-        list_[1] = verb[:-1] + 'なかった'
+        list_[2] = verb[:-1] + 'なかった'
 
         return list_
 
     # When 'u' verb
     elif type_ == 'u':
 
+        # Return English
+        list_[0] = 'not ' + verbs[verb]['past_en'] + ' (plain)'
+
         # Return Hiragana
-        list_[0] = verb[:-1] + verb_table_shifter(verb, 1) + 'なかった'
+        list_[1] = verb[:-1] + verb_table_shifter(verb, 1) + 'なかった'
 
         # Return Mazegaki (Kanji + Hiragana)
-        list_[1] = verbs[verb]['hiragana'][:-1] + verb_table_shifter(
+        list_[2] = verbs[verb]['hiragana'][:-1] + verb_table_shifter(
                                                     verb, 1) + 'なかった'
 
         return list_
