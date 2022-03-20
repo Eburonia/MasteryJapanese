@@ -85,86 +85,138 @@
 
         </div>
 
+        <style>
 
+            #keyboard {
+                background-color: lightgray;
+                overflow: hidden;
+                box-sizing: border-box;
+                padding: 15px;
+                width: 350px;
+                margin: 0 auto;
+                border-radius: 20px;
+            }
 
-        <!--
-        <div id="hiragana-keyboard">
+            .key {
+                float: left;
+                width: 30px;
+                height: 40px;
+                box-sizing: border-box;
+                margin: 1px;
+                background-color: rgb(40, 40, 40);
+                color: white;
+                text-align: center;
+                padding-top: 8px;
+                border-radius: 8px;
+                cursor: pointer;
+            }
 
-            <div id="col-a" class="keyboard-button">あ</div>
-            <div id="col-i" class="keyboard-button">い</div>
-            <div id="col-u" class="keyboard-button">う</div>
-            <div id="col-e" class="keyboard-button">え</div>
-            <div id="col-o" class="keyboard-button">お</div>
+            #key-return {
+                float: left;
+                width: 62px;
+                height: 40px;
+                box-sizing: border-box;
+                margin: 1px;
+                background-color: rgb(40, 40, 40);
+                color: white;
+                text-align: center;
+                padding-top: 8px;
+                border-radius: 8px;
+                cursor: pointer;
+            }
 
-            <div id="col-ka" class="keyboard-button">か</div>
-            <div id="col-ki" class="keyboard-button">き</div>
-            <div id="col-ku" class="keyboard-button">く</div>
-            <div id="col-ke" class="keyboard-button">け</div>
-            <div id="col-ko" class="keyboard-button">こ</div>
+            #key-space {
+                float: left;
+                width: 222px;
+                height: 40px;
+                box-sizing: border-box;
+                margin: 1px;
+                background-color: rgb(40, 40, 40);
+                color: white;
+                text-align: center;
+                padding-top: 5px;
+                border-radius: 8px;
+                cursor: pointer;
+            }
 
-            <div id="col-sa" class="keyboard-button">さ</div>
-            <div id="col-su" class="keyboard-button">す</div>
-            <div id="col-shi" class="keyboard-button">し</div>
-            <div id="col-se" class="keyboard-button">せ</div>
-            <div id="col-so" class="keyboard-button">そ</div>
+            #key-row3 {
+                box-sizing: border-box;
+                margin-left: 16px;
+            }
 
-            <div id="col-ta" class="keyboard-button">た</div>
-            <div id="col-chi" class="keyboard-button">ち</div>
-            <div id="col-tsu" class="keyboard-button">つ</div>
-            <div id="col-te" class="keyboard-button">て</div>
-            <div id="col-to" class="keyboard-button">と</div>
+            #key-row4 {
+                box-sizing: border-box;
+                margin-left: 32px;
+            }
 
-            <div id="col-ha" class="keyboard-button">は</div>
-            <div id="col-hi" class="keyboard-button">ひ</div>
-            <div id="col-fu" class="keyboard-button">ふ</div>
-            <div id="col-he" class="keyboard-button">へ</div>
-            <div id="col-ho" class="keyboard-button">ほ</div>
+        </style>
 
-            <div id="col-ba" class="keyboard-button">ば</div>
-            <div id="col-bi" class="keyboard-button">び</div>
-            <div id="col-bu" class="keyboard-button">ぶ</div>
-            <div id="col-be" class="keyboard-button">べ</div>
-            <div id="col-bo" class="keyboard-button">ぼ</div>
+        <div id="keyboard">
 
-            <div id="col-ma" class="keyboard-button">ま</div>
-            <div id="col-mi" class="keyboard-button">み</div>
-            <div id="col-mu" class="keyboard-button">む</div>
-            <div id="col-me" class="keyboard-button">め</div>
-            <div id="col-mo" class="keyboard-button">も</div>
+            <div id="key-row1">
 
-            <div id="col-na" class="keyboard-button">な</div>
-            <div id="col-ni" class="keyboard-button">に</div>
-            <div id="col-nu" class="keyboard-button">ぬ</div>
-            <div id="col-ne" class="keyboard-button">ね</div>
-            <div id="col-no" class="keyboard-button">の</div>
+                <div id="key-1" class="key">1</div>
+                <div id="key-2" class="key">2</div>
+                <div id="key-3" class="key">3</div>
+                <div id="key-4" class="key">4</div>
+                <div id="key-5" class="key">5</div>
+                <div id="key-6" class="key">6</div>
+                <div id="key-7" class="key">7</div>
+                <div id="key-8" class="key">8</div>
+                <div id="key-9" class="key">9</div>
+                <div id="key-0" class="key">0</div>
 
-            <div id="col-ra" class="keyboard-button">ら</div>
-            <div id="col-ri" class="keyboard-button">り</div>
-            <div id="col-ru" class="keyboard-button">る</div>
-            <div id="col-re" class="keyboard-button">れ</div>
-            <div id="col-ro" class="keyboard-button">ろ</div>
+            </div>
 
-            <div id="col-wa" class="keyboard-button">わ</div>
-            <div class="keyboard-button">-</div>
-            <div class="keyboard-button">-</div>
-            <div class="keyboard-button">-</div>
-            <div id="col-wo" class="keyboard-button">を</div>
+            <div id="key-row2">
 
-            <div id="col-ya" class="keyboard-button">や</div>
-            <div class="keyboard-button">-</div>
-            <div id="col-yu" class="keyboard-button">ゆ</div>
-            <div class="keyboard-button">-</div>
-            <div id="col-yo" class="keyboard-button">よ</div>
+                <div id="key-q" class="key">q</div>
+                <div id="key-w" class="key">w</div>
+                <div id="key-e" class="key">e</div>
+                <div id="key-r" class="key">r</div>
+                <div id="key-t" class="key">t</div>
+                <div id="key-y" class="key">y</div>
+                <div id="key-u" class="key">u</div>
+                <div id="key-i" class="key">i</div>
+                <div id="key-o" class="key">o</div>
+                <div id="key-p" class="key">p</div>
 
-            <div id="col-n" class="keyboard-button">ん</div>
-            <div id="col-double" class="keyboard-button">っ</div>
-            <div id="col-return" class="keyboard-button">r</div>
-            <div class="keyboard-button">-</div>
-            <div class="keyboard-button">-</div>
+            </div>
+
+            <div id="key-row3">
+
+                <div id="key-a" class="key">a</div>
+                <div id="key-s" class="key">s</div>
+                <div id="key-d" class="key">d</div>
+                <div id="key-f" class="key">f</div>
+                <div id="key-g" class="key">g</div>
+                <div id="key-h" class="key">h</div>
+                <div id="key-j" class="key">j</div>
+                <div id="key-k" class="key">k</div>
+                <div id="key-l" class="key">l</div>
+
+            </div>
+
+            <div id="key-row4">
+
+                <div id="key-z" class="key">z</div>
+                <div id="key-x" class="key">x</div>
+                <div id="key-c" class="key">c</div>
+                <div id="key-v" class="key">v</div>
+                <div id="key-b" class="key">b</div>
+                <div id="key-n" class="key">n</div>
+                <div id="key-m" class="key">m</div>
+                <div id="key-return" class="key">return</div>
+
+            </div>
+
+            <div id="key-row4">
+
+                <div id="key-space" class="key">space</div>
+
+            </div>
 
         </div>
-
-    -->
         
     </main>
 
@@ -173,229 +225,163 @@
     // Focus text cursor on textbox
     $('#answer').focus();
 
-    $(document).on("click", ".keyboard-button", function () {
+    $(document).on("click", ".key", function () {
 
         let pushed = $(this).attr('id');
         let x = '';
 
         switch(pushed) {
 
-            case 'col-a':
-                x = 'あ';
+            case 'key-1':
+                x = '1';
                 break;
 
-            case 'col-i':
-                x = 'い';
+            case 'key-2':
+                x = '2';
                 break;
 
-            case 'col-u':
-                x = 'う';
+            case 'key-3':
+                x = '3';
                 break;
 
-            case 'col-e':
-                x = 'え';
+            case 'key-4':
+                x = '4';
                 break;
 
-            case 'col-o':
-                x = 'お';
+            case 'key-5':
+                x = '5';
                 break;
 
-            case 'col-ka':
-                x = 'か';
+            case 'key-6':
+                x = '6';
                 break;
 
-            case 'col-ki':
-                x = 'き';
+            case 'key-7':
+                x = '7';
                 break;
 
-            case 'col-ku':
-                x = 'く';
+            case 'key-8':
+                x = '8';
                 break;
 
-            case 'col-ke':
-                x = 'け';
+            case 'key-9':
+                x = '9';
                 break;
 
-            case 'col-ko':
-                x = 'こ';
+            case 'key-0':
+                x = '0';
                 break;
 
-            case 'col-sa':
-                x = 'さ';
+            case 'key-q':
+                x = 'q';
                 break;
 
-            case 'col-shi':
-                x = 'し';
+            case 'key-w':
+                x = 'w';
                 break;
 
-            case 'col-su':
-                x = 'す';
+            case 'key-e':
+                x = 'e';
                 break;
 
-            case 'col-se':
-                x = 'せ';
+            case 'key-r':
+                x = 'r';
                 break;
 
-            case 'col-so':
-                x = 'そ';
+            case 'key-t':
+                x = 't';
                 break;
 
-            case 'col-ta':
-                x = 'た';
+            case 'key-y':
+                x = 'y';
                 break;
 
-            case 'col-chi':
-                x = 'ち';
+            case 'key-u':
+                x = 'u';
                 break;
 
-            case 'col-tsu':
-                x = 'つ';
+            case 'key-i':
+                x = 'i';
                 break;
 
-            case 'col-te':
-                x = 'て';
+            case 'key-o':
+                x = 'o';
                 break;
 
-            case 'col-to':
-                x = 'と';
+            case 'key-p':
+                x = 'p';
                 break;
 
-            case 'col-ha':
-                x = 'は';
+            case 'key-a':
+                x = 'a';
                 break;
 
-            case 'col-hi':
-                x = 'ひ';
+            case 'key-s':
+                x = 's';
                 break;
 
-            case 'col-fu':
-                x = 'ふ';
+            case 'key-d':
+                x = 'd';
                 break;
 
-            case 'col-he':
-                x = 'へ';
+            case 'key-f':
+                x = 'f';
                 break;
 
-            case 'col-ho':
-                x = 'ほ';
+            case 'key-g':
+                x = 'g';
                 break;
 
-            case 'col-ba':
-                x = 'ば';
+            case 'key-h':
+                x = 'h';
                 break;
 
-            case 'col-bi':
-                x = 'び';
+            case 'key-j':
+                x = 'j';
                 break;
 
-            case 'col-bu':
-                x = 'ぶ';
+            case 'key-k':
+                x = 'k';
                 break;
 
-            case 'col-be':
-                x = 'べ';
+            case 'key-l':
+                x = 'l';
                 break;
 
-            case 'col-bo':
-                x = 'ぼ';
+            case 'key-z':
+                x = 'z';
                 break;
 
-            case 'col-ma':
-                x = 'ま';
+            case 'key-x':
+                x = 'x';
                 break;
 
-            case 'col-mi':
-                x = 'み';
+            case 'key-c':
+                x = 'c';
                 break;
 
-            case 'col-mu':
-                x = 'む';
+            case 'key-v':
+                x = 'v';
                 break;
 
-            case 'col-me':
-                x = 'め';
+            case 'key-b':
+                x = 'b';
                 break;
 
-            case 'col-mo':
-                x = 'も';
+            case 'key-n':
+                x = 'n';
                 break;
 
-            case 'col-na':
-                x = 'な';
+            case 'key-m':
+                x = 'm';
                 break;
 
-            case 'col-ni':
-                x = 'に';
+            case 'key-space':
+                x = ' '
                 break;
 
-            case 'col-nu':
-                x = 'ぬ';
-                break;
-
-            case 'col-ne':
-                x = 'ね';
-                break;
-
-            case 'col-no':
-                x = 'の';
-                break;
-
-            case 'col-ra':
-                x = 'ら';
-                break;
-
-            case 'col-ri':
-                x = 'り';
-                break;
-
-            case 'col-ru':
-                x = 'る';
-                break;
-
-            case 'col-re':
-                x = 'れ';
-                break;
-
-            case 'col-ro':
-                x = 'ろ';
-                break;
-
-            case 'col-wa':
-                x = 'わ';
-                break;
-
-            case 'col-wo':
-                x = 'を';
-                break;
-
-            case 'col-ya':
-                x = 'や';
-                break;
-
-            case 'col-yu':
-                x = 'ゆ';
-                break;
-
-            case 'col-yo':
-                x = 'よ';
-                break;
-
-            case 'col-n':
-                x = 'ん';
-                break;
-
-            case 'col-n':
-                x = 'ん';
-                break;
-
-            case 'col-double':
-                x = 'っ';
-                break;
-
-            case 'col-return':
-   
+            case 'key-return':
                 $('input[type="text"]').val($('input[type="text"]').val().slice(0, -1));
-
                 break;
 
         }
