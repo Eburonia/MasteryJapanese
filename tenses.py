@@ -15,7 +15,7 @@ def present_polite_positive(verb):
     list_ = ['', '', '']
 
     # Get the verb type (ru/u)
-    type_ = verbs[verb]['type']
+    type_ = verbs[verb]['verb-type']
 
     # When 'ru' verb
     if type_ == 'ru':
@@ -61,7 +61,7 @@ def present_polite_negative(verb):
     list_ = ['', '', '']
 
     # Get the verb type (ru/u)
-    type_ = verbs[verb]['type']
+    type_ = verbs[verb]['verb-type']
 
     # When 'ru' verb
     if type_ == 'ru':
@@ -107,7 +107,7 @@ def past_polite_positive(verb):
     list_ = ['', '', '']
 
     # Get the verb type (ru/u)
-    type_ = verbs[verb]['type']
+    type_ = verbs[verb]['verb-type']
 
     # When 'ru' verb
     if type_ == 'ru':
@@ -153,7 +153,7 @@ def past_polite_negative(verb):
     list_ = ['', '', '']
 
     # Get the verb type (ru/u)
-    type_ = verbs[verb]['type']
+    type_ = verbs[verb]['verb-type']
 
     # When 'ru' verb
     if type_ == 'ru':
@@ -219,7 +219,7 @@ def present_plain_negative(verb):
     list_ = ['', '', '']
 
     # Get the verb type (ru/u)
-    type_ = verbs[verb]['type']
+    type_ = verbs[verb]['verb-type']
 
     # When 'ru' verb
     if type_ == 'ru':
@@ -265,7 +265,7 @@ def past_plain_positive(verb):
     list_ = ['', '', '']
 
     # Get the verb type (ru/u)
-    type_ = verbs[verb]['type']
+    type_ = verbs[verb]['verb-type']
 
     # When 'ru' verb
     if type_ == 'ru':
@@ -319,7 +319,7 @@ def past_plain_negative(verb):
     list_ = ['', '', '']
 
     # Get the verb type (ru/u)
-    type_ = verbs[verb]['type']
+    type_ = verbs[verb]['verb-type']
 
     # When 'ru' verb
     if type_ == 'ru':
@@ -364,7 +364,7 @@ def present_polite_progressive_positive(verb):
     list_ = ['', '']
 
     # Get the verb type (ru/u)
-    type_ = verbs[verb]['type']
+    type_ = verbs[verb]['verb-type']
 
     # When 'ru' verb
     if type_ == 'ru':
@@ -402,7 +402,7 @@ def present_polite_progressive_negative(verb):
     list_ = ['', '']
 
     # Get the verb type (ru/u)
-    type_ = verbs[verb]['type']
+    type_ = verbs[verb]['verb-type']
 
     # When 'ru' verb
     if type_ == 'ru':
@@ -440,7 +440,7 @@ def past_polite_progressive_positive(verb):
     list_ = ['', '']
 
     # Get the verb type (ru/u)
-    type_ = verbs[verb]['type']
+    type_ = verbs[verb]['verb-type']
 
     # When 'ru' verb
     if type_ == 'ru':
@@ -478,7 +478,7 @@ def past_polite_progressive_negative(verb):
     list_ = ['', '']
 
     # Get the verb type (ru/u)
-    type_ = verbs[verb]['type']
+    type_ = verbs[verb]['verb-type']
 
     # When 'ru' verb
     if type_ == 'ru':

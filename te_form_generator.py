@@ -11,7 +11,7 @@ def te_form(verb, ret):
     ret = 1 = return Mazegaki '''
 
     # Get the verb type (ru/u)
-    type_ = verbs[verb]['type']
+    type_ = verbs[verb]['verb-type']
 
     # When 'ru' verb
     if type_ == 'ru':
