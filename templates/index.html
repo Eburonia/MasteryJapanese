@@ -91,7 +91,7 @@
                 background-color: lightgray;
                 overflow: hidden;
                 box-sizing: border-box;
-                padding: 15px;
+                padding: 5px;
                 width: 40%;
                 margin: 0 auto;
                 border-radius: 20px;
@@ -291,14 +291,28 @@
 
         </div>
         
-        <div id="toggle-keyboard">SHOW/HIDE KEYBOARD</div>
+        <div id="toggle-keyboard">HIDE KEYBOARD</div>
 
     </main>
 
 <script>
 
+
+    let toggle
+
+
     $(document).on("click", "#toggle-keyboard", function () {
         $("#keyboard").toggle("slow");
+
+        if(toggle == 1) {
+            toggle = 0
+            $('#toggle-keyboard').text('HIDE KEYBOARD')
+        }
+
+        else {
+            toggle = 1
+            $('#toggle-keyboard').text('SHOW KEYBOARD')
+        }
     });
 
 
