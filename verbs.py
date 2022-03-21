@@ -5,6 +5,7 @@ Contains the verbs used
 verbs = {
 
   '食べる': {
+    'type': 'verb',
     'verb-type': 'ru',
     'hiragana': 'たべる',
     'present_en': 'eat',
@@ -12,6 +13,7 @@ verbs = {
   },
 
   '飲む': {
+    'type': 'verb',
     'verb-type': 'u',
     'hiragana': 'のむ',
     'present_en': 'drink',
@@ -19,6 +21,7 @@ verbs = {
   },
 
   '書く': {
+    'type': 'verb',
     'verb-type': 'u',
     'hiragana': 'かく',
     'present_en': 'write',
@@ -26,6 +29,7 @@ verbs = {
   },
 
   '買う': {
+    'type': 'verb',
     'verb-type': 'u',
     'hiragana': 'かう',
     'present_en': 'buy',
@@ -33,6 +37,7 @@ verbs = {
   },
 
   '死ぬ': {
+    'type': 'verb',
     'verb-type': 'u',
     'hiragana': 'しぬ',
     'present_en': 'die',
@@ -40,6 +45,7 @@ verbs = {
   },
 
   '話す': {
+    'type': 'verb',
     'verb-type': 'u',
     'hiragana': 'はなす',
     'present_en': 'speak',
@@ -47,6 +53,7 @@ verbs = {
   },
 
   '泳ぐ': {
+    'type': 'verb',
     'verb-type': 'u',
     'hiragana': 'およぐ',
     'present_en': 'swim',
@@ -54,6 +61,7 @@ verbs = {
   },
 
   '登る': {
+    'type': 'verb',
     'verb-type': 'u',
     'hiragana': 'のぼる',
     'present_en': 'climb',
@@ -61,6 +69,7 @@ verbs = {
   },
 
   '習う': {
+    'type': 'verb',
     'verb-type': 'u',
     'hiragana': 'ならう',
     'present_en': 'learn',
@@ -68,6 +77,7 @@ verbs = {
   },
 
   '開ける': {
+    'type': 'verb',
     'verb-type': 'ru',
     'hiragana': 'あける',
     'present_en': 'open',
@@ -75,6 +85,7 @@ verbs = {
   },
 
   '閉める': {
+    'type': 'verb',
     'verb-type': 'ru',
     'hiragana': 'しめる',
     'present_en': 'close',
@@ -82,6 +93,7 @@ verbs = {
   },
 
   '読む': {
+    'type': 'verb',
     'verb-type': 'u',
     'hiragana': 'よむ',
     'present_en': 'read',
