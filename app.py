@@ -61,6 +61,7 @@ def index():
             # Set green or red color (correct or incorrect answer)
             color = correct_answer['answer_color']
 
+            # Wrong answer
             if color == 'red':
 
                 your_answer = request.form.get('answer')

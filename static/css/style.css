@@ -63,6 +63,7 @@ input[type=text] {
   padding: 5px 10px;
   font-size: 20px;
   outline: none;
+  border: 1px solid rgb(30, 30, 30);
 }
 
 input[type=submit] {
