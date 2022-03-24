@@ -47,15 +47,6 @@ def index():
             # Check given answer with correct answer
             correct_answer = check_answer(request.form.get('answer'), session['answers'])
 
-            # Increment correct answer or incorrect answer
-            if correct_answer['answer_correct_or_incorrect'] is True:
-
-                session['correct_answers_stat'] = session['correct_answers_stat'] + 1
-
-            else:
-
-                session['incorrect_answers_stat'] = session['incorrect_answers_stat'] + 1
-
             # Set correct answer
             answer = correct_answer['correct_answer']
 
@@ -86,6 +77,15 @@ def index():
                 color = 'none'
 
                 session['sw'] = False
+
+                # Increment correct answer or incorrect answer
+                if correct_answer['answer_correct_or_incorrect'] is True:
+
+                    session['correct_answers_stat'] = session['correct_answers_stat'] + 1
+
+                else:
+
+                    session['incorrect_answers_stat'] = session['incorrect_answers_stat'] + 1
 
             else:
 
