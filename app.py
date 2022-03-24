@@ -65,7 +65,7 @@ def index():
             # Wrong answer
             if color == 'red':
 
-                your_answer = request.form.get('answer')
+                your_answer = correct_answer['correct_answer']
 
             if session['sw'] is True:
 
