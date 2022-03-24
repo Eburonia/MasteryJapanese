@@ -37,6 +37,7 @@ def index():
     disable_button = ''
     your_answer = ''
 
+
     # POST request
     if request.method == 'POST':
 
@@ -66,17 +67,29 @@ def index():
 
                 your_answer = request.form.get('answer')
 
-            # Generate a new question
-            question_and_answer = generate_question_answer()
+            if session['sw'] is True:
 
-            # Send question to front-end
-            question = question_and_answer['question']
+                # Generate a new question
+                question_and_answer = generate_question_answer()
 
-            # Save the answers in a cookie
-            session['answers'] = {
-                'answer_hiragana': question_and_answer['answer_hiragana'],
-                'answer_mazegaki': question_and_answer['answer_mazegaki']
-            }
+                # Save the question and answers in a cookie
+                session['answers'] = {
+                    'question': question_and_answer['question'],
+                    'answer_hiragana': question_and_answer['answer_hiragana'],
+                    'answer_mazegaki': question_and_answer['answer_mazegaki']
+                }
+
+                # Erase answer when generated new question
+                answer = ''
+
+                # Change textfield background color to none
+                color = 'none'
+
+                session['sw'] = False
+
+            else:
+
+                session['sw'] = True
 
         # When no more verbs in session_memory cookie
         else:
@@ -129,11 +142,9 @@ def index():
         # Generate a new question
         question_and_answer = generate_question_answer()
 
-        # Send question to front-end
-        question = question_and_answer['question']
-
         # Save the answers in a cookie
         session['answers'] = {
+            'question': question_and_answer['question'],
             'answer_hiragana': question_and_answer['answer_hiragana'],
             'answer_mazegaki': question_and_answer['answer_mazegaki']
             }
@@ -143,7 +154,7 @@ def index():
 
     # Render the practice page
     return render_template("index.html",
-                           question=question, answer=answer,
+                           question=session['answers']['question'], answer=answer,
                            color=color, disable_input=disable_input,
                            correct_answers_stat=session['correct_answers_stat'],
                            incorrect_answers_stat=session['incorrect_answers_stat'],
